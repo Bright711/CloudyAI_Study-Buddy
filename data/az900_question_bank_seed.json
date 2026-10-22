@@ -1,0 +1,65 @@
+{
+  "tags": [
+    {
+      "tag_id": "CC-SRM-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "SaaS transfers all responsibility",
+      "description": "Believes that using SaaS means the provider is responsible for everything, including the customer's data and identities.",
+      "correct_concept": "Data, devices, and accounts/identities are always the customer's responsibility, in every service type."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "CC-001",
+      "domain": "Cloud concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": 1,
+      "stem": "A manager says: \"We use Microsoft 365 (SaaS), so Microsoft is responsible for everything.\" Which item is still always the company's responsibility?",
+      "options": [
+        { "letter": "A", "text": "Information and data", "is_correct": true, "misconception_tag": null, "rationale": "Data, devices, and accounts/identities remain the customer's responsibility in every service type." },
+        { "letter": "B", "text": "Physical datacenter security", "is_correct": false, "misconception_tag": "CC-SRM-02", "rationale": "Physical security is always the cloud provider's responsibility." },
+        { "letter": "C", "text": "Patching the host servers' operating system", "is_correct": false, "misconception_tag": "CC-SRM-02", "rationale": "Host infrastructure is managed by the provider in SaaS." },
+        { "letter": "D", "text": "Nothing, because SaaS transfers all responsibility to the provider", "is_correct": false, "misconception_tag": "CC-SRM-01", "rationale": "Even in SaaS the customer remains responsible for data, devices, and identities." }
+      ],
+      "correct_letter": "A",
+      "explanation": "Under the shared responsibility model, the customer always owns their information and data, devices, and accounts and identities.",
+      "concept_note": "Always the customer: information and data, devices, accounts and identities. Always the provider: physical datacenter, network, and hosts.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-002",
+      "domain": "Cloud concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": 2,
+      "stem": "A company runs a Windows Server virtual machine in Azure (IaaS). Who is responsible for managing and patching the guest operating system?",
+      "options": [
+        { "letter": "A", "text": "Microsoft, because Azure hosts the virtual machine", "is_correct": false, "misconception_tag": "CC-SRM-04", "rationale": "Hosting the VM does not make Microsoft responsible for the guest OS." },
+        { "letter": "B", "text": "The customer", "is_correct": true, "misconception_tag": null, "rationale": "In IaaS the customer manages the guest OS; Microsoft manages the physical hosts and hypervisor." },
+        { "letter": "C", "text": "Responsibility is split 50/50", "is_correct": false, "misconception_tag": "CC-SRM-05", "rationale": "Responsibility is divided by layer, not split evenly." },
+        { "letter": "D", "text": "Azure always patches every VM automatically", "is_correct": false, "misconception_tag": "CC-SRM-04", "rationale": "Patching is not automatic by default." }
+      ],
+      "correct_letter": "B",
+      "explanation": "In IaaS, the provider is responsible for the physical datacenter, network, and hosts, while the customer manages the operating system.",
+      "concept_note": "IaaS: customer manages OS, runtime, apps, data. Provider manages physical hosts, network, datacenter.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-003",
+      "domain": "Cloud concepts",
+      "topic": "Consumption-based model, CapEx vs OpEx",
+      "difficulty": 1,
+      "stem": "A company stops buying servers upfront and instead pays monthly for the Azure resources it uses. How does this change its spending?",
+      "options": [
+        { "letter": "A", "text": "It shifts spending from operational expenditure to capital expenditure", "is_correct": false, "misconception_tag": "CC-CAPEX-01", "rationale": "This reverses the terms." },
+        { "letter": "B", "text": "Costs become fixed and no longer depend on usage", "is_correct": false, "misconception_tag": "CC-CAPEX-02", "rationale": "The consumption-based model ties cost to usage." },
+        { "letter": "C", "text": "It shifts spending from capital expenditure to operational expenditure", "is_correct": true, "misconception_tag": null, "rationale": "Upfront hardware purchases (CapEx) are replaced by ongoing, usage-based costs (OpEx)." },
+        { "letter": "D", "text": "Costs are unchanged because Azure bills once per year", "is_correct": false, "misconception_tag": "CC-CAPEX-02", "rationale": "Azure bills based on usage, typically monthly." }
+      ],
+      "correct_letter": "C",
+      "explanation": "Cloud shifts spending from CapEx (buying hardware upfront) to OpEx (paying for what you use).",
+      "concept_note": "CapEx = upfront purchase. OpEx = ongoing spend. Consumption-based = pay for what you use.",
+      "review_status": "Drafted - SME sign-off pending"
+    }
+  ]
+}
