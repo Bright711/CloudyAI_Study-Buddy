@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B132B" />
+  <title>CloudyAI Study Buddy | AZ-900 Prep</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="CloudyAI home">
+        <span class="brand-mark">☁</span><span class="brand-copy"><strong>CloudyAI</strong><small>STUDY BUDDY</small></span>
+      </a>
+      <div class="workspace-label">LEARNING SPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-link" data-page="quiz"><span class="nav-icon">✎</span> Practice quiz <span class="nav-count">8</span></button>
+        <button class="nav-link" data-page="radar"><span class="nav-icon">◉</span> Misconception radar</button>
+        <button class="nav-link" data-page="topics"><span class="nav-icon">▤</span> Topic explorer</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="streak-card"><span class="streak-icon">✦</span><div><strong>Keep your streak going</strong><p>Small steps add up. Practice today!</p></div></div>
+        <div class="profile"><div class="avatar">C</div><div class="profile-text"><strong>Cloud learner</strong><small>AZ-900 pathway</small></div><span class="profile-menu">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>Study space</span><span class="crumb-slash">/</span><strong id="crumbCurrent">Overview</strong></div>
+        <div class="topbar-actions"><span class="demo-badge"><span></span> DEMO MODE</span><button class="icon-button" id="helpButton" aria-label="Help">?</button></div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-row"><div><div class="eyebrow">YOUR AZURE JOURNEY</div><h1>Good to see you, learner <span class="wave">✦</span></h1><p class="muted">Build confidence with one concept at a time.</p></div><button class="primary-button" data-go="quiz">＋ Start a practice session <span>→</span></button></div>
+        <div class="study-cta">
+          <div class="study-cta-copy"><span class="hero-kicker">YOUR NEXT STEP</span><h2>Make cloud concepts click.</h2><p>Answer a few AZ-900 questions and learn from the explanations.</p></div>
+          <button class="hero-button" data-go="quiz">Start practice <span>→</span></button>
+        </div>
+        <div class="section-heading"><div><h2>Your progress</h2><p class="muted">A quick look at your practice so far.</p></div></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span class="stat-icon lavender">✓</span><span class="stat-label">QUESTIONS ANSWERED</span></div><div class="stat-number" id="statAnswered">0 <small>/ 8</small></div><div class="stat-foot">Try a quiz to build your history</div><div class="mini-progress"><span id="answeredBar" style="width:0%"></span></div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon mint">◎</span><span class="stat-label">ACCURACY</span></div><div class="stat-number" id="statAccuracy">—<small>%</small></div><div class="stat-foot">Based on submitted answers</div><div class="mini-progress mint-bar"><span id="accuracyBar" style="width:0%"></span></div></article></div>
+        <div class="dashboard-grid"><article class="panel domain-panel"><div class="panel-heading"><div><h3>Domain practice</h3><p class="muted">Your progress by AZ-900 domain</p></div><span class="soft-tag">SAMPLE DATA</span></div><div id="domainProgress" class="domain-list"></div></article><article class="panel focus-panel"><div class="panel-heading"><div><h3>Suggested focus</h3><p class="muted">Concepts worth revisiting</p></div><span class="focus-spark">✦</span></div><div id="focusList" class="focus-list"></div><button class="outline-button full-button" data-go="radar">Explore misconception radar <span>→</span></button></article></div>
+        <div class="disclaimer">Demo experience · Progress is saved only in this browser. No account or backend is connected.</div>
+      </section>
+
+      <section class="page" id="page-quiz">
+        <div class="page-heading"><div><div class="eyebrow">PRACTICE MODE</div><h1>AZ-900 practice quiz</h1><p class="muted">Choose the best answer, then submit to see your explanation.</p></div><span class="soft-tag">SAMPLE QUESTION BANK</span></div>
+        <div class="quiz-layout"><div class="quiz-main"><div class="quiz-toolbar"><span id="quizQuestionCount">QUESTION 1 OF 8</span><span id="quizDifficulty" class="difficulty">FOUNDATION</span></div><div class="quiz-progress"><span id="quizProgressBar"></span></div><div class="question-card"><div class="question-meta"><span id="quizDomain" class="domain-pill">Cloud concepts</span><span id="quizTopic" class="muted">Cloud economics</span></div><h2 id="questionStem">Loading question…</h2><div id="answerOptions" class="answer-options"></div><div id="answerFeedback" class="answer-feedback hidden" aria-live="polite"></div><div class="quiz-controls"><button class="outline-button" id="prevQuestion">← Previous</button><span id="answerStatus" class="muted small-text">Select one answer</span><button class="primary-button" id="submitAnswer">Check answer <span>→</span></button><button class="primary-button hidden" id="nextQuestion">Next question <span>→</span></button></div></div><p class="quiz-note">Practice content is illustrative and has not been SME-approved. Always study the official AZ-900 objectives.</p></div><aside class="quiz-side panel"><h3>Session checklist</h3><p class="muted">Move through the questions at your pace.</p><div class="question-grid" id="questionGrid"></div><div class="legend"><span><i class="legend-current"></i> Current</span><span><i class="legend-done"></i> Answered</span><span><i class="legend-empty"></i> Unanswered</span></div><div class="side-tip"><span>✦</span><div><strong>Learning tip</strong><p>Read the explanation even when your answer is correct. It helps you remember the concept.</p></div></div><button class="outline-button full-button" id="resetQuiz">↻ Reset session</button></aside></div>
+      </section>
+
+      <section class="page" id="page-radar">
+        <div class="page-heading"><div><div class="eyebrow">LEARN FROM YOUR ANSWERS</div><h1>Misconception radar</h1><p class="muted">Spot common mix-ups and review the correct concept.</p></div><span class="soft-tag">ILLUSTRATIVE INSIGHTS</span></div>
+        <div class="radar-intro"><div class="radar-symbol">◉</div><div><h2>Understand the “why” behind a mistake.</h2><p>These cards use the sample question tags. They are not a diagnosis of your knowledge; personal insights update only after you answer questions in this demo.</p></div></div>
+        <div class="radar-summary"><div class="radar-summary-card"><span class="summary-label">CONCEPTS TO REVIEW</span><strong id="radarCount">6</strong><small>Across the sample question bank</small></div><div class="radar-summary-card"><span class="summary-label">YOUR INCORRECT ANSWERS</span><strong id="radarIncorrect">0</strong><small>From this practice session</small></div><div class="radar-summary-card"><span class="summary-label">REVIEW STATUS</span><strong class="status-word">In progress</strong><small>Practice, review, repeat</small></div></div>
+        <div class="section-heading"><div><h2>Concept review cards</h2><p class="muted">Select a domain to narrow the list.</p></div><select id="radarFilter" class="select-control" aria-label="Filter misconception domain"><option value="all">All domains</option><option value="Cloud concepts">Cloud concepts</option><option value="Azure architecture and services">Azure architecture</option><option value="Azure management and governance">Management & governance</option></select></div>
+        <div id="radarCards" class="radar-grid"></div><div class="disclaimer">Confidence scores and intervention logic belong to the backend team's integration. This frontend shows transparent sample labels only.</div>
+      </section>
+
+      <section class="page" id="page-topics">
+        <div class="page-heading"><div><div class="eyebrow">EXPLORE THE SYLLABUS</div><h1>Topic explorer</h1><p class="muted">Browse sample AZ-900 practice questions by domain and difficulty.</p></div><span class="soft-tag">8 SAMPLE QUESTIONS</span></div>
+        <div class="topic-filters"><label class="search-field"><span>⌕</span><input id="topicSearch" type="search" placeholder="Search topics or questions…" /></label><select id="topicDomain" class="select-control"><option value="all">All domains</option><option>Cloud concepts</option><option>Azure architecture and services</option><option>Azure management and governance</option></select><select id="topicDifficulty" class="select-control"><option value="all">All difficulty</option><option>Beginner</option><option>Intermediate</option></select></div>
+        <div id="topicResults" class="topic-results"></div>
+      </section>
+
+      <footer class="app-footer"><span>☁ CloudyAI Study Buddy</span><span>Built for AZ-900 learning · Frontend demo</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
