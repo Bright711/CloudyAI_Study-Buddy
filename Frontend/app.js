@@ -1,44 +1,463 @@
 /* CloudyAI Study Buddy - frontend-only demo. No API or backend integration. */
 const questions = [
- {id:'CC-001',domain:'Cloud concepts',topic:'Cloud economics',difficulty:'Beginner',stem:'Which cloud financial model lets an organization pay for computing resources as it uses them, rather than buying hardware upfront?',options:[{letter:'A',text:'Capital expenditure (CapEx)'},{letter:'B',text:'Operational expenditure (OpEx)'},{letter:'C',text:'A fixed hardware purchase'},{letter:'D',text:'A data centre lease'}],correct:'B',explanation:'Operational expenditure (OpEx) pays for services as they are consumed. CapEx typically involves upfront investment in physical infrastructure.',tag:'CapEx vs. OpEx',tagDescription:'Confusing upfront infrastructure investment with ongoing consumption-based costs.',concept:'CapEx is usually an upfront investment in assets; OpEx covers ongoing operating costs, including many pay-as-you-go cloud services.',misconception:'Cloud spending always requires buying servers first.'},
- {id:'CC-002',domain:'Cloud concepts',topic:'Cloud characteristics',difficulty:'Beginner',stem:'A retail website experiences a sudden increase in visitors during a sale. Which cloud concept describes adding resources to meet the increased demand?',options:[{letter:'A',text:'High availability'},{letter:'B',text:'Governance'},{letter:'C',text:'Scalability'},{letter:'D',text:'Fault isolation'}],correct:'C',explanation:'Scalability is the ability to adjust resources to meet workload demands. Elasticity describes scaling resources up or down as demand changes.',tag:'Scalability vs. availability',tagDescription:'Mixing up the ability to handle changing demand with keeping a service running.',concept:'Scalability adjusts capacity for workload needs. Availability is about whether a service is accessible when needed.',misconception:'Adding more resources is the same thing as high availability.'},
- {id:'CC-003',domain:'Cloud concepts',topic:'Cloud service types',difficulty:'Beginner',stem:'Which cloud service model gives you virtual machines while you manage the operating system and installed applications?',options:[{letter:'A',text:'Software as a Service (SaaS)'},{letter:'B',text:'Platform as a Service (PaaS)'},{letter:'C',text:'Infrastructure as a Service (IaaS)'},{letter:'D',text:'Function as a Service only'}],correct:'C',explanation:'With IaaS, the provider manages physical infrastructure while you generally manage the operating system, configuration, and applications on your virtual machines.',tag:'IaaS vs. PaaS',tagDescription:'Confusing managed infrastructure with a platform where the provider manages more of the runtime.',concept:'IaaS provides foundational computing resources. PaaS abstracts more of the operating system and runtime management.',misconception:'The cloud provider manages every layer in IaaS.'},
- {id:'AZ-001',domain:'Azure architecture and services',topic:'Regions and availability zones',difficulty:'Intermediate',stem:'What is the main purpose of availability zones within an Azure region?',options:[{letter:'A',text:'To group subscriptions by department'},{letter:'B',text:'To provide physically separate locations with independent power, cooling, and networking'},{letter:'C',text:'To replace the need for backups in every workload'},{letter:'D',text:'To determine a resource’s billing owner'}],correct:'B',explanation:'Availability zones are physically separate locations within an Azure region, designed to improve resiliency when a zone experiences an outage. They do not replace backups.',tag:'Regions vs. zones',tagDescription:'Treating an Azure region and an availability zone as interchangeable.',concept:'A region is a geographic area containing one or more data centres. Availability zones are separate locations within supported regions.',misconception:'An availability zone is a completely different Azure region.'},
- {id:'AZ-002',domain:'Azure architecture and services',topic:'Resource hierarchy',difficulty:'Beginner',stem:'Which Azure construct is commonly used to manage and organize resources that belong to the same solution?',options:[{letter:'A',text:'Resource group'},{letter:'B',text:'Availability zone'},{letter:'C',text:'Microsoft Entra user'},{letter:'D',text:'Service health alert'}],correct:'A',explanation:'A resource group is a logical container for Azure resources that are managed together. A resource belongs to one resource group at a time.',tag:'Resource groups vs. subscriptions',tagDescription:'Confusing the container for related resources with a broader billing and access boundary.',concept:'Subscriptions provide a management and billing boundary; resource groups organize related resources within a subscription.',misconception:'A resource group is the same as an Azure subscription.'},
- {id:'AZ-003',domain:'Azure architecture and services',topic:'Identity',difficulty:'Intermediate',stem:'Which Microsoft cloud service provides identity and access management for users and applications?',options:[{letter:'A',text:'Azure Monitor'},{letter:'B',text:'Azure Policy'},{letter:'C',text:'Microsoft Entra ID'},{letter:'D',text:'Azure Blob Storage'}],correct:'C',explanation:'Microsoft Entra ID is Microsoft’s cloud-based identity and access management service for users, groups, and applications.',tag:'Identity vs. governance',tagDescription:'Confusing identity services that authenticate users with governance tools that enforce resource rules.',concept:'Microsoft Entra ID manages identities and authentication. Azure Policy helps enforce organizational standards on resources.',misconception:'Azure Policy is the service that signs users in.'},
- {id:'MG-001',domain:'Azure management and governance',topic:'Access control',difficulty:'Intermediate',stem:'An administrator wants to control which actions a user can perform on Azure resources. Which service should they use?',options:[{letter:'A',text:'Azure Cost Management'},{letter:'B',text:'Azure role-based access control (Azure RBAC)'},{letter:'C',text:'Azure Service Health'},{letter:'D',text:'Azure Advisor only'}],correct:'B',explanation:'Azure RBAC assigns roles to users, groups, or applications at a scope, controlling which actions they can perform on Azure resources.',tag:'RBAC vs. Azure Policy',tagDescription:'Mixing permission assignments with rules that evaluate or enforce resource configuration.',concept:'Azure RBAC controls who can do what at a given scope. Azure Policy evaluates and helps enforce resource compliance.',misconception:'Azure Policy is the main tool for assigning user permissions.'},
- {id:'MG-002',domain:'Azure management and governance',topic:'Governance',difficulty:'Beginner',stem:'A company wants to prevent resources from being created in unapproved Azure regions. Which service is best suited to this requirement?',options:[{letter:'A',text:'Azure Policy'},{letter:'B',text:'Azure Monitor'},{letter:'C',text:'Microsoft Entra ID only'},{letter:'D',text:'Azure Service Health'}],correct:'A',explanation:'Azure Policy can evaluate and enforce rules such as restricting deployments to approved locations. Identity permissions alone do not express this resource-compliance rule.',tag:'Policy vs. access control',tagDescription:'Assuming user permissions alone enforce all organizational configuration requirements.',concept:'Azure Policy governs resource configuration and compliance. Azure RBAC governs permissions and permitted actions.',misconception:'Restricting a user’s role automatically enforces every resource standard.'}
+  {
+    id: "CC-001",
+    domain: "Cloud concepts",
+    topic: "Cloud economics",
+    difficulty: "Beginner",
+    stem: "Which cloud financial model lets an organization pay for computing resources as it uses them, rather than buying hardware upfront?",
+    options: [
+      { letter: "A", text: "Capital expenditure (CapEx)" },
+      { letter: "B", text: "Operational expenditure (OpEx)" },
+      { letter: "C", text: "A fixed hardware purchase" },
+      { letter: "D", text: "A data centre lease" },
+    ],
+    correct: "B",
+    explanation:
+      "Operational expenditure (OpEx) pays for services as they are consumed. CapEx typically involves upfront investment in physical infrastructure.",
+    tag: "CapEx vs. OpEx",
+    tagDescription:
+      "Confusing upfront infrastructure investment with ongoing consumption-based costs.",
+    concept:
+      "CapEx is usually an upfront investment in assets; OpEx covers ongoing operating costs, including many pay-as-you-go cloud services.",
+    misconception: "Cloud spending always requires buying servers first.",
+  },
+  {
+    id: "CC-002",
+    domain: "Cloud concepts",
+    topic: "Cloud characteristics",
+    difficulty: "Beginner",
+    stem: "A retail website experiences a sudden increase in visitors during a sale. Which cloud concept describes adding resources to meet the increased demand?",
+    options: [
+      { letter: "A", text: "High availability" },
+      { letter: "B", text: "Governance" },
+      { letter: "C", text: "Scalability" },
+      { letter: "D", text: "Fault isolation" },
+    ],
+    correct: "C",
+    explanation:
+      "Scalability is the ability to adjust resources to meet workload demands. Elasticity describes scaling resources up or down as demand changes.",
+    tag: "Scalability vs. availability",
+    tagDescription:
+      "Mixing up the ability to handle changing demand with keeping a service running.",
+    concept:
+      "Scalability adjusts capacity for workload needs. Availability is about whether a service is accessible when needed.",
+    misconception:
+      "Adding more resources is the same thing as high availability.",
+  },
+  {
+    id: "CC-003",
+    domain: "Cloud concepts",
+    topic: "Cloud service types",
+    difficulty: "Beginner",
+    stem: "Which cloud service model gives you virtual machines while you manage the operating system and installed applications?",
+    options: [
+      { letter: "A", text: "Software as a Service (SaaS)" },
+      { letter: "B", text: "Platform as a Service (PaaS)" },
+      { letter: "C", text: "Infrastructure as a Service (IaaS)" },
+      { letter: "D", text: "Function as a Service only" },
+    ],
+    correct: "C",
+    explanation:
+      "With IaaS, the provider manages physical infrastructure while you generally manage the operating system, configuration, and applications on your virtual machines.",
+    tag: "IaaS vs. PaaS",
+    tagDescription:
+      "Confusing managed infrastructure with a platform where the provider manages more of the runtime.",
+    concept:
+      "IaaS provides foundational computing resources. PaaS abstracts more of the operating system and runtime management.",
+    misconception: "The cloud provider manages every layer in IaaS.",
+  },
+  {
+    id: "AZ-001",
+    domain: "Azure architecture and services",
+    topic: "Regions and availability zones",
+    difficulty: "Intermediate",
+    stem: "What is the main purpose of availability zones within an Azure region?",
+    options: [
+      { letter: "A", text: "To group subscriptions by department" },
+      {
+        letter: "B",
+        text: "To provide physically separate locations with independent power, cooling, and networking",
+      },
+      {
+        letter: "C",
+        text: "To replace the need for backups in every workload",
+      },
+      { letter: "D", text: "To determine a resource’s billing owner" },
+    ],
+    correct: "B",
+    explanation:
+      "Availability zones are physically separate locations within an Azure region, designed to improve resiliency when a zone experiences an outage. They do not replace backups.",
+    tag: "Regions vs. zones",
+    tagDescription:
+      "Treating an Azure region and an availability zone as interchangeable.",
+    concept:
+      "A region is a geographic area containing one or more data centres. Availability zones are separate locations within supported regions.",
+    misconception:
+      "An availability zone is a completely different Azure region.",
+  },
+  {
+    id: "AZ-002",
+    domain: "Azure architecture and services",
+    topic: "Resource hierarchy",
+    difficulty: "Beginner",
+    stem: "Which Azure construct is commonly used to manage and organize resources that belong to the same solution?",
+    options: [
+      { letter: "A", text: "Resource group" },
+      { letter: "B", text: "Availability zone" },
+      { letter: "C", text: "Microsoft Entra user" },
+      { letter: "D", text: "Service health alert" },
+    ],
+    correct: "A",
+    explanation:
+      "A resource group is a logical container for Azure resources that are managed together. A resource belongs to one resource group at a time.",
+    tag: "Resource groups vs. subscriptions",
+    tagDescription:
+      "Confusing the container for related resources with a broader billing and access boundary.",
+    concept:
+      "Subscriptions provide a management and billing boundary; resource groups organize related resources within a subscription.",
+    misconception: "A resource group is the same as an Azure subscription.",
+  },
+  {
+    id: "AZ-003",
+    domain: "Azure architecture and services",
+    topic: "Identity",
+    difficulty: "Intermediate",
+    stem: "Which Microsoft cloud service provides identity and access management for users and applications?",
+    options: [
+      { letter: "A", text: "Azure Monitor" },
+      { letter: "B", text: "Azure Policy" },
+      { letter: "C", text: "Microsoft Entra ID" },
+      { letter: "D", text: "Azure Blob Storage" },
+    ],
+    correct: "C",
+    explanation:
+      "Microsoft Entra ID is Microsoft’s cloud-based identity and access management service for users, groups, and applications.",
+    tag: "Identity vs. governance",
+    tagDescription:
+      "Confusing identity services that authenticate users with governance tools that enforce resource rules.",
+    concept:
+      "Microsoft Entra ID manages identities and authentication. Azure Policy helps enforce organizational standards on resources.",
+    misconception: "Azure Policy is the service that signs users in.",
+  },
+  {
+    id: "MG-001",
+    domain: "Azure management and governance",
+    topic: "Access control",
+    difficulty: "Intermediate",
+    stem: "An administrator wants to control which actions a user can perform on Azure resources. Which service should they use?",
+    options: [
+      { letter: "A", text: "Azure Cost Management" },
+      { letter: "B", text: "Azure role-based access control (Azure RBAC)" },
+      { letter: "C", text: "Azure Service Health" },
+      { letter: "D", text: "Azure Advisor only" },
+    ],
+    correct: "B",
+    explanation:
+      "Azure RBAC assigns roles to users, groups, or applications at a scope, controlling which actions they can perform on Azure resources.",
+    tag: "RBAC vs. Azure Policy",
+    tagDescription:
+      "Mixing permission assignments with rules that evaluate or enforce resource configuration.",
+    concept:
+      "Azure RBAC controls who can do what at a given scope. Azure Policy evaluates and helps enforce resource compliance.",
+    misconception:
+      "Azure Policy is the main tool for assigning user permissions.",
+  },
+  {
+    id: "MG-002",
+    domain: "Azure management and governance",
+    topic: "Governance",
+    difficulty: "Beginner",
+    stem: "A company wants to prevent resources from being created in unapproved Azure regions. Which service is best suited to this requirement?",
+    options: [
+      { letter: "A", text: "Azure Policy" },
+      { letter: "B", text: "Azure Monitor" },
+      { letter: "C", text: "Microsoft Entra ID only" },
+      { letter: "D", text: "Azure Service Health" },
+    ],
+    correct: "A",
+    explanation:
+      "Azure Policy can evaluate and enforce rules such as restricting deployments to approved locations. Identity permissions alone do not express this resource-compliance rule.",
+    tag: "Policy vs. access control",
+    tagDescription:
+      "Assuming user permissions alone enforce all organizational configuration requirements.",
+    concept:
+      "Azure Policy governs resource configuration and compliance. Azure RBAC governs permissions and permitted actions.",
+    misconception:
+      "Restricting a user’s role automatically enforces every resource standard.",
+  },
 ];
-const domains = ['Cloud concepts','Azure architecture and services','Azure management and governance'];
-const $ = (selector, root=document) => root.querySelector(selector);
-const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+const domains = [
+  "Cloud concepts",
+  "Azure architecture and services",
+  "Azure management and governance",
+];
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 let currentQuestion = 0;
 let selectedAnswers = {};
 let submittedAnswers = {};
 let toastTimer;
-const escapeHtml = (value) => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-function showToast(message){const toast=$('#toast');toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
-function goToPage(page){const valid=['dashboard','quiz','radar','topics'];if(!valid.includes(page))return;$$('.page').forEach(el=>el.classList.toggle('active',el.id===`page-${page}`));$$('.nav-link').forEach(el=>el.classList.toggle('active',el.dataset.page===page));$('#crumbCurrent').textContent=({dashboard:'Overview',quiz:'Practice quiz',radar:'Misconception radar',topics:'Topic explorer'})[page];$('#sidebar').classList.remove('open');if(page==='dashboard')renderDashboard();if(page==='radar')renderRadar();if(page==='topics')renderTopics();window.scrollTo({top:0,behavior:'smooth'})}
-function scoreStats(){const answered=Object.keys(submittedAnswers).length;const correct=Object.entries(submittedAnswers).filter(([id,answer])=>questions.find(q=>q.id===id)?.correct===answer).length;return {answered,correct,incorrect:answered-correct,accuracy:answered?Math.round(correct/answered*100):0}}
-function renderDashboard(){const stats=scoreStats();$('#statAnswered').innerHTML=`${stats.answered} <small>/ ${questions.length}</small>`;$('#statAccuracy').innerHTML=stats.answered?`${stats.accuracy}<small>%</small>`:'—<small>%</small>';$('#answeredBar').style.width=`${stats.answered/questions.length*100}%`;$('#accuracyBar').style.width=`${stats.accuracy}%`;$('#domainProgress').innerHTML=domains.map(domain=>{const qs=questions.filter(q=>q.domain===domain);const done=qs.filter(q=>submittedAnswers[q.id]!==undefined).length;const correct=qs.filter(q=>submittedAnswers[q.id]===q.correct).length;const pct=done?Math.round(correct/done*100):0;return `<div class="domain-row"><strong>${escapeHtml(domain)}</strong><small>${done?`${correct}/${done} correct`:'Not started'}</small><div class="domain-bar"><span style="width:${pct}%"></span></div></div>`}).join('');const reviewItems=questions.filter(q=>submittedAnswers[q.id]&&submittedAnswers[q.id]!==q.correct);const suggested=(reviewItems.length?reviewItems:questions.slice(0,3)).slice(0,3);$('#focusList').innerHTML=suggested.map(q=>`<div class="focus-item"><span class="focus-dot"></span><div><strong>${escapeHtml(q.tag)}</strong><p>${escapeHtml(q.topic)} · ${reviewItems.length?'Review your answer':'Recommended concept review'}</p></div></div>`).join('')}
-function renderQuestion(){const q=questions[currentQuestion];$('#quizQuestionCount').textContent=`QUESTION ${currentQuestion+1} OF ${questions.length}`;$('#quizDifficulty').textContent=q.difficulty.toUpperCase();$('#quizDomain').textContent=q.domain;$('#quizTopic').textContent=q.topic;$('#questionStem').textContent=q.stem;$('#quizProgressBar').style.width=`${(currentQuestion+1)/questions.length*100}%`;$('#answerOptions').innerHTML=q.options.map(option=>{let cls='answer-option';if(selectedAnswers[q.id]===option.letter)cls+=' selected';if(submittedAnswers[q.id]!==undefined){if(option.letter===q.correct)cls+=' correct';else if(option.letter===submittedAnswers[q.id])cls+=' incorrect'}return `<button class="${cls}" data-option="${option.letter}" ${submittedAnswers[q.id]!==undefined?'disabled':''}><span class="option-letter">${option.letter}</span><span class="option-text">${escapeHtml(option.text)}</span></button>`}).join('');const feedback=$('#answerFeedback');feedback.className='answer-feedback hidden';if(submittedAnswers[q.id]!==undefined){const correct=submittedAnswers[q.id]===q.correct;feedback.className=`answer-feedback ${correct?'good':'bad'}`;feedback.innerHTML=`<strong>${correct?'✓ Correct answer':'↻ Not quite — review the concept'}</strong><p>${escapeHtml(q.explanation)}</p><p><strong>Key concept:</strong> ${escapeHtml(q.concept)}</p>`}$('#prevQuestion').disabled=currentQuestion===0;$('#prevQuestion').style.opacity=currentQuestion===0?'.45':'1';const isSubmitted=submittedAnswers[q.id]!==undefined;$('#submitAnswer').classList.toggle('hidden',isSubmitted);$('#nextQuestion').classList.toggle('hidden',!isSubmitted);$('#nextQuestion').innerHTML=currentQuestion===questions.length-1?'Finish session ✓':'Next question <span>→</span>';$('#answerStatus').textContent=isSubmitted?'Answer submitted':selectedAnswers[q.id]?'Answer selected':'Select one answer';$('#questionGrid').innerHTML=questions.map((item,index)=>`<button class="question-tile ${index===currentQuestion?'current':''} ${submittedAnswers[item.id]!==undefined?'done':''}" data-question-index="${index}" aria-label="Go to question ${index+1}">${index+1}</button>`).join('');}
-function chooseAnswer(letter){const q=questions[currentQuestion];if(submittedAnswers[q.id]!==undefined)return;selectedAnswers[q.id]=letter;renderQuestion()}
-function submitAnswer(){const q=questions[currentQuestion];if(!selectedAnswers[q.id]){showToast('Choose an answer before checking.');return}submittedAnswers[q.id]=selectedAnswers[q.id];renderQuestion();renderDashboard();const correct=selectedAnswers[q.id]===q.correct;showToast(correct?'Correct! Read the explanation to reinforce it.':'Answer checked. Review the explanation below.');}
-function nextQuestion(){if(currentQuestion<questions.length-1){currentQuestion++;renderQuestion();return}goToPage('dashboard');showToast('Session reviewed. Your demo progress has been updated.')}
-function resetQuiz(){currentQuestion=0;selectedAnswers={};submittedAnswers={};renderQuestion();renderDashboard();showToast('Practice session reset.')}
-function renderRadar(){const tags=[...new Map(questions.map(q=>[q.tag,q])).values()];const filter=$('#radarFilter').value;const filtered=tags.filter(q=>filter==='all'||q.domain===filter);$('#radarCount').textContent=tags.length;$('#radarIncorrect').textContent=scoreStats().incorrect;$('#radarCards').innerHTML=filtered.map(q=>{const related=questions.filter(item=>item.tag===q.tag);const wrong=related.some(item=>submittedAnswers[item.id]!==undefined&&submittedAnswers[item.id]!==item.correct);return `<article class="radar-card"><div class="radar-card-top"><span class="tag-badge">${escapeHtml(q.domain)}</span><span class="review-badge">${wrong?'Review suggested':'Concept review'}</span></div><h3>${escapeHtml(q.tag)}</h3><p class="description">${escapeHtml(q.tagDescription)}</p><div class="correct-concept"><small>REMEMBER THIS</small><p>${escapeHtml(q.concept)}</p></div><div class="radar-card-foot"><span>${escapeHtml(q.topic)}</span><span class="personal-status">${wrong?'Missed in this session':'Sample concept tag'}</span></div></article>`}).join('')||'<div class="empty-state">No concept cards match this filter.</div>'}
-function renderTopics(){const search=$('#topicSearch').value.trim().toLowerCase();const domain=$('#topicDomain').value;const difficulty=$('#topicDifficulty').value;const filtered=questions.filter(q=>(domain==='all'||q.domain===domain)&&(difficulty==='all'||q.difficulty===difficulty)&&`${q.stem} ${q.topic} ${q.tag} ${q.domain}`.toLowerCase().includes(search));$('#topicResults').innerHTML=filtered.map((q)=>`<article class="topic-row"><div class="topic-row-icon">${q.domain==='Cloud concepts'?'☁':q.domain==='Azure architecture and services'?'⌘':'⚙'}</div><div class="topic-row-content"><h3>${escapeHtml(q.stem)}</h3><p>${escapeHtml(q.domain)} · ${escapeHtml(q.topic)} · ${submittedAnswers[q.id]!==undefined?(submittedAnswers[q.id]===q.correct?'Answered correctly':'Review answer'):'Not attempted'}</p></div><div class="topic-row-side"><span class="difficulty-tag ${q.difficulty==='Intermediate'?'intermediate':''}">${q.difficulty}</span><button class="topic-open" data-start-question="${questions.indexOf(q)}" aria-label="Practice this question">→</button></div></article>`).join('')||'<div class="empty-state">No questions found. Try another search or filter.</div>'}
-$$('.nav-link').forEach(button=>button.addEventListener('click',()=>goToPage(button.dataset.page)));
-$$('[data-go]').forEach(button=>button.addEventListener('click',()=>goToPage(button.dataset.go)));
-$('#mobileMenu').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
-$('#helpButton').addEventListener('click',()=>showToast('Choose Practice quiz to answer questions, or Misconception radar to review concepts.'));
-$('#answerOptions').addEventListener('click',event=>{const button=event.target.closest('[data-option]');if(button)chooseAnswer(button.dataset.option)});
-$('#submitAnswer').addEventListener('click',submitAnswer);
-$('#nextQuestion').addEventListener('click',nextQuestion);
-$('#prevQuestion').addEventListener('click',()=>{if(currentQuestion>0){currentQuestion--;renderQuestion()}});
-$('#questionGrid').addEventListener('click',event=>{const button=event.target.closest('[data-question-index]');if(button){currentQuestion=Number(button.dataset.questionIndex);renderQuestion()}});
-$('#resetQuiz').addEventListener('click',resetQuiz);
-$('#radarFilter').addEventListener('change',renderRadar);
-$('#topicSearch').addEventListener('input',renderTopics);$('#topicDomain').addEventListener('change',renderTopics);$('#topicDifficulty').addEventListener('change',renderTopics);
-$('#topicResults').addEventListener('click',event=>{const button=event.target.closest('[data-start-question]');if(button){currentQuestion=Number(button.dataset.startQuestion);goToPage('quiz');renderQuestion()}});
-renderQuestion();renderDashboard();renderRadar();renderTopics();
+const escapeHtml = (value) =>
+  String(value).replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        char
+      ],
+  );
+function showToast(message) {
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+function goToPage(page) {
+  const valid = ["dashboard", "quiz", "radar", "topics"];
+  if (!valid.includes(page)) return;
+  $$(".page").forEach((el) =>
+    el.classList.toggle("active", el.id === `page-${page}`),
+  );
+  $$(".nav-link").forEach((el) =>
+    el.classList.toggle("active", el.dataset.page === page),
+  );
+  $("#crumbCurrent").textContent = {
+    dashboard: "Overview",
+    quiz: "Practice quiz",
+    radar: "Misconception radar",
+    topics: "Topic explorer",
+  }[page];
+  $("#sidebar").classList.remove("open");
+  if (page === "dashboard") renderDashboard();
+  if (page === "radar") renderRadar();
+  if (page === "topics") renderTopics();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function scoreStats() {
+  const answered = Object.keys(submittedAnswers).length;
+  const correct = Object.entries(submittedAnswers).filter(
+    ([id, answer]) => questions.find((q) => q.id === id)?.correct === answer,
+  ).length;
+  return {
+    answered,
+    correct,
+    incorrect: answered - correct,
+    accuracy: answered ? Math.round((correct / answered) * 100) : 0,
+  };
+}
+function renderDashboard() {
+  const stats = scoreStats();
+  $("#statAnswered").innerHTML =
+    `${stats.answered} <small>/ ${questions.length}</small>`;
+  $("#statAccuracy").innerHTML = stats.answered
+    ? `${stats.accuracy}<small>%</small>`
+    : "—<small>%</small>";
+  $("#answeredBar").style.width =
+    `${(stats.answered / questions.length) * 100}%`;
+  $("#accuracyBar").style.width = `${stats.accuracy}%`;
+  $("#domainProgress").innerHTML = domains
+    .map((domain) => {
+      const qs = questions.filter((q) => q.domain === domain);
+      const done = qs.filter(
+        (q) => submittedAnswers[q.id] !== undefined,
+      ).length;
+      const correct = qs.filter(
+        (q) => submittedAnswers[q.id] === q.correct,
+      ).length;
+      const pct = done ? Math.round((correct / done) * 100) : 0;
+      return `<div class="domain-row"><strong>${escapeHtml(domain)}</strong><small>${done ? `${correct}/${done} correct` : "Not started"}</small><div class="domain-bar"><span style="width:${pct}%"></span></div></div>`;
+    })
+    .join("");
+  const reviewItems = questions.filter(
+    (q) => submittedAnswers[q.id] && submittedAnswers[q.id] !== q.correct,
+  );
+  const suggested = (
+    reviewItems.length ? reviewItems : questions.slice(0, 3)
+  ).slice(0, 3);
+  $("#focusList").innerHTML = suggested
+    .map(
+      (q) =>
+        `<div class="focus-item"><span class="focus-dot"></span><div><strong>${escapeHtml(q.tag)}</strong><p>${escapeHtml(q.topic)} · ${reviewItems.length ? "Review your answer" : "Recommended concept review"}</p></div></div>`,
+    )
+    .join("");
+}
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  $("#quizQuestionCount").textContent =
+    `QUESTION ${currentQuestion + 1} OF ${questions.length}`;
+  $("#quizDifficulty").textContent = q.difficulty.toUpperCase();
+  $("#quizDomain").textContent = q.domain;
+  $("#quizTopic").textContent = q.topic;
+  $("#questionStem").textContent = q.stem;
+  $("#quizProgressBar").style.width =
+    `${((currentQuestion + 1) / questions.length) * 100}%`;
+  $("#answerOptions").innerHTML = q.options
+    .map((option) => {
+      let cls = "answer-option";
+      if (selectedAnswers[q.id] === option.letter) cls += " selected";
+      if (submittedAnswers[q.id] !== undefined) {
+        if (option.letter === q.correct) cls += " correct";
+        else if (option.letter === submittedAnswers[q.id]) cls += " incorrect";
+      }
+      return `<button class="${cls}" data-option="${option.letter}" ${submittedAnswers[q.id] !== undefined ? "disabled" : ""}><span class="option-letter">${option.letter}</span><span class="option-text">${escapeHtml(option.text)}</span></button>`;
+    })
+    .join("");
+  const feedback = $("#answerFeedback");
+  feedback.className = "answer-feedback hidden";
+  if (submittedAnswers[q.id] !== undefined) {
+    const correct = submittedAnswers[q.id] === q.correct;
+    feedback.className = `answer-feedback ${correct ? "good" : "bad"}`;
+    feedback.innerHTML = `<strong>${correct ? "✓ Correct answer" : "↻ Not quite — review the concept"}</strong><p>${escapeHtml(q.explanation)}</p><p><strong>Key concept:</strong> ${escapeHtml(q.concept)}</p>`;
+  }
+  $("#prevQuestion").disabled = currentQuestion === 0;
+  $("#prevQuestion").style.opacity = currentQuestion === 0 ? ".45" : "1";
+  const isSubmitted = submittedAnswers[q.id] !== undefined;
+  $("#submitAnswer").classList.toggle("hidden", isSubmitted);
+  $("#nextQuestion").classList.toggle("hidden", !isSubmitted);
+  $("#nextQuestion").innerHTML =
+    currentQuestion === questions.length - 1
+      ? "Finish session ✓"
+      : "Next question <span>→</span>";
+  $("#answerStatus").textContent = isSubmitted
+    ? "Answer submitted"
+    : selectedAnswers[q.id]
+      ? "Answer selected"
+      : "Select one answer";
+  $("#questionGrid").innerHTML = questions
+    .map(
+      (item, index) =>
+        `<button class="question-tile ${index === currentQuestion ? "current" : ""} ${submittedAnswers[item.id] !== undefined ? "done" : ""}" data-question-index="${index}" aria-label="Go to question ${index + 1}">${index + 1}</button>`,
+    )
+    .join("");
+}
+function chooseAnswer(letter) {
+  const q = questions[currentQuestion];
+  if (submittedAnswers[q.id] !== undefined) return;
+  selectedAnswers[q.id] = letter;
+  renderQuestion();
+}
+function submitAnswer() {
+  const q = questions[currentQuestion];
+  if (!selectedAnswers[q.id]) {
+    showToast("Choose an answer before checking.");
+    return;
+  }
+  submittedAnswers[q.id] = selectedAnswers[q.id];
+  renderQuestion();
+  renderDashboard();
+  const correct = selectedAnswers[q.id] === q.correct;
+  showToast(
+    correct
+      ? "Correct! Read the explanation to reinforce it."
+      : "Answer checked. Review the explanation below.",
+  );
+}
+function nextQuestion() {
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    return;
+  }
+  goToPage("dashboard");
+  showToast("Session reviewed. Your demo progress has been updated.");
+}
+function resetQuiz() {
+  currentQuestion = 0;
+  selectedAnswers = {};
+  submittedAnswers = {};
+  renderQuestion();
+  renderDashboard();
+  showToast("Practice session reset.");
+}
+function renderRadar() {
+  const tags = [...new Map(questions.map((q) => [q.tag, q])).values()];
+  const filter = $("#radarFilter").value;
+  const filtered = tags.filter((q) => filter === "all" || q.domain === filter);
+  $("#radarCount").textContent = tags.length;
+  $("#radarIncorrect").textContent = scoreStats().incorrect;
+  $("#radarCards").innerHTML =
+    filtered
+      .map((q) => {
+        const related = questions.filter((item) => item.tag === q.tag);
+        const wrong = related.some(
+          (item) =>
+            submittedAnswers[item.id] !== undefined &&
+            submittedAnswers[item.id] !== item.correct,
+        );
+        return `<article class="radar-card"><div class="radar-card-top"><span class="tag-badge">${escapeHtml(q.domain)}</span><span class="review-badge">${wrong ? "Review suggested" : "Concept review"}</span></div><h3>${escapeHtml(q.tag)}</h3><p class="description">${escapeHtml(q.tagDescription)}</p><div class="correct-concept"><small>REMEMBER THIS</small><p>${escapeHtml(q.concept)}</p></div><div class="radar-card-foot"><span>${escapeHtml(q.topic)}</span><span class="personal-status">${wrong ? "Missed in this session" : "Sample concept tag"}</span></div></article>`;
+      })
+      .join("") ||
+    '<div class="empty-state">No concept cards match this filter.</div>';
+}
+function renderTopics() {
+  const search = $("#topicSearch").value.trim().toLowerCase();
+  const domain = $("#topicDomain").value;
+  const difficulty = $("#topicDifficulty").value;
+  const filtered = questions.filter(
+    (q) =>
+      (domain === "all" || q.domain === domain) &&
+      (difficulty === "all" || q.difficulty === difficulty) &&
+      `${q.stem} ${q.topic} ${q.tag} ${q.domain}`
+        .toLowerCase()
+        .includes(search),
+  );
+  $("#topicResults").innerHTML =
+    filtered
+      .map(
+        (q) =>
+          `<article class="topic-row"><div class="topic-row-icon">${q.domain === "Cloud concepts" ? "☁" : q.domain === "Azure architecture and services" ? "⌘" : "⚙"}</div><div class="topic-row-content"><h3>${escapeHtml(q.stem)}</h3><p>${escapeHtml(q.domain)} · ${escapeHtml(q.topic)} · ${submittedAnswers[q.id] !== undefined ? (submittedAnswers[q.id] === q.correct ? "Answered correctly" : "Review answer") : "Not attempted"}</p></div><div class="topic-row-side"><span class="difficulty-tag ${q.difficulty === "Intermediate" ? "intermediate" : ""}">${q.difficulty}</span><button class="topic-open" data-start-question="${questions.indexOf(q)}" aria-label="Practice this question">→</button></div></article>`,
+      )
+      .join("") ||
+    '<div class="empty-state">No questions found. Try another search or filter.</div>';
+}
+$$(".nav-link").forEach((button) =>
+  button.addEventListener("click", () => goToPage(button.dataset.page)),
+);
+$$("[data-go]").forEach((button) =>
+  button.addEventListener("click", () => goToPage(button.dataset.go)),
+);
+$("#mobileMenu").addEventListener("click", () =>
+  $("#sidebar").classList.toggle("open"),
+);
+$("#helpButton").addEventListener("click", () =>
+  showToast(
+    "Choose Practice quiz to answer questions, or Misconception radar to review concepts.",
+  ),
+);
+$("#answerOptions").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-option]");
+  if (button) chooseAnswer(button.dataset.option);
+});
+$("#submitAnswer").addEventListener("click", submitAnswer);
+$("#nextQuestion").addEventListener("click", nextQuestion);
+$("#prevQuestion").addEventListener("click", () => {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+  }
+});
+$("#questionGrid").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-question-index]");
+  if (button) {
+    currentQuestion = Number(button.dataset.questionIndex);
+    renderQuestion();
+  }
+});
+$("#resetQuiz").addEventListener("click", resetQuiz);
+$("#radarFilter").addEventListener("change", renderRadar);
+$("#topicSearch").addEventListener("input", renderTopics);
+$("#topicDomain").addEventListener("change", renderTopics);
+$("#topicDifficulty").addEventListener("change", renderTopics);
+$("#topicResults").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-start-question]");
+  if (button) {
+    currentQuestion = Number(button.dataset.startQuestion);
+    goToPage("quiz");
+    renderQuestion();
+  }
+});
+renderQuestion();
+renderDashboard();
+renderRadar();
+renderTopics();

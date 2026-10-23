@@ -1,0 +1,1862 @@
+{
+  "tags": [
+    {
+      "tag_id": "CC-SRM-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "SaaS transfers all responsibility",
+      "description": "Believes that using SaaS means the provider is responsible for everything, including the customer's data and identities.",
+      "correct_concept": "Data, devices, and accounts/identities are always the customer's responsibility, in every service type."
+    },
+    {
+      "tag_id": "CC-SRM-02",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "Over-assigns infrastructure to customer",
+      "description": "Believes the customer manages physical hosts, datacenters, or provider-side infrastructure.",
+      "correct_concept": "Physical hosts, network, and datacenter are always the provider's responsibility in the public cloud."
+    },
+    {
+      "tag_id": "CC-SRM-03",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "PaaS customer patches platform",
+      "description": "Believes a PaaS customer still patches the database engine, runtime, or underlying OS.",
+      "correct_concept": "In PaaS the provider manages the OS and platform runtime; the customer manages data, access, and application configuration."
+    },
+    {
+      "tag_id": "CC-SRM-04",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "Provider patches IaaS guest OS",
+      "description": "Believes Microsoft patches and manages the guest OS of an IaaS virtual machine automatically.",
+      "correct_concept": "In IaaS the customer manages the guest OS, including patching; the provider manages the physical layer and hypervisor."
+    },
+    {
+      "tag_id": "CC-SRM-05",
+      "domain": "Cloud concepts",
+      "concept_group": "Shared responsibility",
+      "name": "Shared means 50/50",
+      "description": "Reads 'shared responsibility' as an equal split of every task.",
+      "correct_concept": "Responsibility is divided by layer and service type, not split equally task by task."
+    },
+    {
+      "tag_id": "CC-CAPEX-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cost model (CapEx/OpEx)",
+      "name": "Reverses CapEx and OpEx",
+      "description": "Swaps capital expenditure (upfront purchase) and operational expenditure (ongoing spend).",
+      "correct_concept": "Cloud moves spend from CapEx (buying hardware upfront) to OpEx (paying as you consume)."
+    },
+    {
+      "tag_id": "CC-CAPEX-02",
+      "domain": "Cloud concepts",
+      "concept_group": "Cost model (CapEx/OpEx)",
+      "name": "Cloud pricing is fixed",
+      "description": "Believes cloud costs are fixed or unrelated to usage under the consumption-based model.",
+      "correct_concept": "The consumption-based model bills for what you use, with no upfront capital cost."
+    },
+    {
+      "tag_id": "CC-ELAS-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud benefits",
+      "name": "Elasticity confused with availability",
+      "description": "Confuses automatic scaling (elasticity) with high availability or uptime.",
+      "correct_concept": "Elasticity adjusts resources to demand; high availability keeps services accessible despite failures."
+    },
+    {
+      "tag_id": "CC-BEN-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud benefits",
+      "name": "Mixes up cloud benefit terms",
+      "description": "Confuses cloud benefits such as predictability, agility, or geo-distribution with the scenario described.",
+      "correct_concept": "Match the scenario to the benefit: elasticity = auto scale to demand; agility = fast provisioning; predictability = performance and cost forecasting."
+    },
+    {
+      "tag_id": "CC-MODEL-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud models",
+      "name": "Mixes up public/private/hybrid",
+      "description": "Confuses public, private, and hybrid cloud definitions.",
+      "correct_concept": "Hybrid combines on-premises (or private) with public cloud, letting data stay on-premises while workloads burst to Azure."
+    },
+    {
+      "tag_id": "CC-MODEL-02",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud models",
+      "name": "Multicloud means hybrid",
+      "description": "Treats multicloud (several cloud providers) as the same as hybrid (on-premises plus cloud).",
+      "correct_concept": "Multicloud = more than one cloud provider; hybrid = on-premises plus cloud."
+    },
+    {
+      "tag_id": "CC-SVC-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Service types (IaaS/PaaS/SaaS)",
+      "name": "Mixes up IaaS/PaaS/SaaS",
+      "description": "Confuses the three service types, e.g. treats any hosted app as SaaS or any hosted workload as IaaS.",
+      "correct_concept": "IaaS = you manage OS and up; PaaS = you manage app and data; SaaS = you consume finished software."
+    },
+    {
+      "tag_id": "CC-SVC-02",
+      "domain": "Cloud concepts",
+      "concept_group": "Service types (IaaS/PaaS/SaaS)",
+      "name": "Practice vs service model",
+      "description": "Confuses a practice (such as infrastructure as code) with a cloud service model.",
+      "correct_concept": "IaaS/PaaS/SaaS describe who manages what; IaC is a way of deploying resources."
+    },
+    {
+      "tag_id": "CC-HA-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud benefits",
+      "name": "High availability vs disaster recovery",
+      "description": "Confuses staying available through component failures (HA) with recovering after a major outage (DR).",
+      "correct_concept": "HA minimises downtime during failures; DR restores service after a major disruption."
+    },
+    {
+      "tag_id": "CC-SCALE-01",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud benefits",
+      "name": "Scale up vs scale out",
+      "description": "Confuses vertical scaling (bigger instance) with horizontal scaling (more instances).",
+      "correct_concept": "Scaling out/horizontal adds instances; scaling up/vertical makes one instance larger."
+    },
+    {
+      "tag_id": "CC-SCALE-02",
+      "domain": "Cloud concepts",
+      "concept_group": "Cloud benefits",
+      "name": "Scaling vs resilience or cost",
+      "description": "Confuses scaling with failover or cost optimisation.",
+      "correct_concept": "Scaling changes capacity for load; failover and right-sizing address resilience and cost."
+    },
+    {
+      "tag_id": "AR-RES-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Regions and availability zones",
+      "name": "Region pair vs availability zone",
+      "description": "Confuses region pairs (disaster recovery across regions) with availability zones (datacenters within one region).",
+      "correct_concept": "Availability zones protect against datacenter failure; region pairs support recovery from a regional disaster."
+    },
+    {
+      "tag_id": "AR-RES-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Regions and availability zones",
+      "name": "Misdefines availability zones",
+      "description": "Believes availability zones share power, cooling, or networking.",
+      "correct_concept": "Each availability zone has independent power, cooling, and networking."
+    },
+    {
+      "tag_id": "AR-ORG-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Resource organisation",
+      "name": "Management group / subscription order",
+      "description": "Reverses the order of management groups and subscriptions.",
+      "correct_concept": "Hierarchy: management group > subscription > resource group > resource."
+    },
+    {
+      "tag_id": "AR-ORG-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Resource organisation",
+      "name": "Resource group above subscription",
+      "description": "Believes resource groups sit above subscriptions.",
+      "correct_concept": "Resource groups live inside a subscription and hold resources."
+    },
+    {
+      "tag_id": "AR-ORG-03",
+      "domain": "Azure architecture and services",
+      "concept_group": "Resource organisation",
+      "name": "Deleting a resource group keeps resources",
+      "description": "Believes resources survive deletion of their resource group.",
+      "correct_concept": "Deleting a resource group deletes every resource in it."
+    },
+    {
+      "tag_id": "AR-ORG-05",
+      "domain": "Azure architecture and services",
+      "concept_group": "Resource organisation",
+      "name": "Subscription treated as regional construct",
+      "description": "Confuses subscriptions (billing/access boundary) with regional or resiliency constructs.",
+      "correct_concept": "A subscription is a billing and access boundary, not a resiliency feature."
+    },
+    {
+      "tag_id": "AR-ORG-06",
+      "domain": "Azure architecture and services",
+      "concept_group": "Resource organisation",
+      "name": "Over-scopes deletion",
+      "description": "Believes deleting a resource group deletes the subscription.",
+      "correct_concept": "Deletion cascades downward (group to resources), not upward."
+    },
+    {
+      "tag_id": "AR-COMP-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Compute",
+      "name": "Defaults to VMs for everything",
+      "description": "Chooses virtual machines (IaaS) for workloads suited to higher-level services.",
+      "correct_concept": "Match the compute option to the need: VMs for control, containers, serverless for event-driven code."
+    },
+    {
+      "tag_id": "AR-COMP-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Compute",
+      "name": "AKS vs simple containers",
+      "description": "Chooses AKS when a single containerised app needs no orchestration, or confuses it with serverless.",
+      "correct_concept": "AKS is for orchestrated container workloads; Azure Container Instances runs single containers on demand."
+    },
+    {
+      "tag_id": "AR-COMP-03",
+      "domain": "Azure architecture and services",
+      "concept_group": "Compute",
+      "name": "Desktop virtualisation confusion",
+      "description": "Confuses Azure Virtual Desktop with application or container hosting.",
+      "correct_concept": "Azure Virtual Desktop delivers desktops and apps to users; it does not host containers."
+    },
+    {
+      "tag_id": "AR-COMP-04",
+      "domain": "Azure architecture and services",
+      "concept_group": "Compute",
+      "name": "App Service vs Functions",
+      "description": "Confuses always-on web hosting (App Service) with event-driven, per-execution serverless (Functions).",
+      "correct_concept": "Azure Functions runs code in response to events and bills per execution."
+    },
+    {
+      "tag_id": "AR-STOR-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "LRS protects against datacenter loss",
+      "description": "Believes locally redundant storage survives a datacenter failure.",
+      "correct_concept": "LRS keeps three copies inside a single datacenter; ZRS spreads across availability zones."
+    },
+    {
+      "tag_id": "AR-STOR-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "ZRS vs GRS",
+      "description": "Confuses zone redundancy (same region) with geo-redundancy (secondary region, asynchronous).",
+      "correct_concept": "ZRS = synchronous across zones in one region; GRS = asynchronous copy to a paired region."
+    },
+    {
+      "tag_id": "AR-STOR-03",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "Access tier vs redundancy",
+      "description": "Confuses access tiers (hot/cool/archive) with redundancy options.",
+      "correct_concept": "Access tiers control cost versus access speed; redundancy controls data copies."
+    },
+    {
+      "tag_id": "AR-STOR-04",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "Blob vs Azure Files",
+      "description": "Confuses object storage (Blob) with SMB/NFS file shares (Azure Files).",
+      "correct_concept": "Blob storage holds unstructured objects such as images and video."
+    },
+    {
+      "tag_id": "AR-STOR-05",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "Blob vs Table",
+      "description": "Confuses object storage with NoSQL key-value (Table) storage.",
+      "correct_concept": "Table storage holds structured NoSQL data, not media objects."
+    },
+    {
+      "tag_id": "AR-STOR-06",
+      "domain": "Azure architecture and services",
+      "concept_group": "Storage",
+      "name": "Blob vs Queue",
+      "description": "Confuses object storage with message queuing.",
+      "correct_concept": "Queue storage holds messages for asynchronous processing."
+    },
+    {
+      "tag_id": "AR-NET-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "VPN Gateway vs ExpressRoute",
+      "description": "Believes a VPN Gateway is a private connection that avoids the public internet.",
+      "correct_concept": "VPN Gateway sends encrypted traffic over the public internet; ExpressRoute is a private connection."
+    },
+    {
+      "tag_id": "AR-NET-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "Bastion vs connectivity",
+      "description": "Confuses Azure Bastion (secure RDP/SSH to VMs) with site-to-cloud connectivity.",
+      "correct_concept": "Bastion gives secure browser-based RDP/SSH to VMs; it is not a hybrid network link."
+    },
+    {
+      "tag_id": "AR-NET-03",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "VNet peering vs on-premises link",
+      "description": "Confuses virtual network peering with connecting on-premises networks.",
+      "correct_concept": "Peering connects Azure virtual networks to each other."
+    },
+    {
+      "tag_id": "AR-NET-04",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "NSG vs Azure Firewall",
+      "description": "Confuses basic NSG rules with the centralised, managed Azure Firewall service.",
+      "correct_concept": "NSGs filter traffic by 5-tuple rules on subnets or NICs; Azure Firewall is a managed, centralised network security service."
+    },
+    {
+      "tag_id": "AR-NET-05",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "Load balancing vs filtering",
+      "description": "Believes a load balancer filters traffic.",
+      "correct_concept": "Load Balancer distributes traffic; it does not apply allow/deny security rules."
+    },
+    {
+      "tag_id": "AR-NET-06",
+      "domain": "Azure architecture and services",
+      "concept_group": "Networking",
+      "name": "DNS vs filtering",
+      "description": "Believes Azure DNS controls traffic flow.",
+      "correct_concept": "Azure DNS resolves names; it does not filter traffic."
+    },
+    {
+      "tag_id": "AR-ID-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Identity and access",
+      "name": "Entra ID is AD DS",
+      "description": "Believes Microsoft Entra ID supports LDAP, Kerberos, and domain join like on-premises AD DS.",
+      "correct_concept": "Entra Domain Services provides managed domain services (LDAP, Kerberos, NTLM, domain join)."
+    },
+    {
+      "tag_id": "AR-IAM-01",
+      "domain": "Azure architecture and services",
+      "concept_group": "Identity and access",
+      "name": "Permissions vs directory services",
+      "description": "Confuses authorization/permission features with directory services.",
+      "correct_concept": "RBAC grants permissions on Azure resources; it provides no directory or domain services."
+    },
+    {
+      "tag_id": "AR-IAM-02",
+      "domain": "Azure architecture and services",
+      "concept_group": "Identity and access",
+      "name": "Authentication vs authorization",
+      "description": "Swaps authentication (proving identity) and authorization (what you can access).",
+      "correct_concept": "Authentication verifies who you are; authorization decides what you can do."
+    },
+    {
+      "tag_id": "AR-IAM-03",
+      "domain": "Azure architecture and services",
+      "concept_group": "Identity and access",
+      "name": "SSO vs authentication",
+      "description": "Treats single sign-on as the act of verifying identity.",
+      "correct_concept": "SSO lets one sign-in reach many apps; the verification step is authentication."
+    },
+    {
+      "tag_id": "MG-IAM-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "RBAC vs Conditional Access",
+      "description": "Confuses permissions on resources (RBAC) with sign-in controls (Conditional Access).",
+      "correct_concept": "Conditional Access enforces controls such as MFA at sign-in based on signals; RBAC grants access to resources."
+    },
+    {
+      "tag_id": "MG-GOV-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "Azure Policy vs RBAC",
+      "description": "Confuses rules on what can be deployed (Policy) with who may act (RBAC).",
+      "correct_concept": "Policy enforces resource configuration standards; RBAC controls who can do what."
+    },
+    {
+      "tag_id": "MG-GOV-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "Policy vs locks vs other governance",
+      "description": "Confuses locks (prevent change/delete) with Policy or with cost/optimisation tools.",
+      "correct_concept": "Locks block accidental deletion or modification; Policy governs configuration."
+    },
+    {
+      "tag_id": "MG-GOV-03",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "Policy prevents deletion",
+      "description": "Believes Azure Policy protects existing resources from deletion.",
+      "correct_concept": "Use a CanNotDelete lock to prevent deletion; Policy evaluates configuration and compliance."
+    },
+    {
+      "tag_id": "MG-GOV-04",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "Tags enforce rules",
+      "description": "Believes tags enforce behaviour.",
+      "correct_concept": "Tags are metadata for organising and cost reporting; they do not enforce controls."
+    },
+    {
+      "tag_id": "MG-RBAC-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "RBAC scope not inherited",
+      "description": "Believes a role assigned at a higher scope applies only to that scope object.",
+      "correct_concept": "RBAC permissions are inherited by child scopes: management group, subscription, resource group, resource."
+    },
+    {
+      "tag_id": "MG-RBAC-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "RBAC applies only to new resources",
+      "description": "Believes role assignments cover only resources created afterward.",
+      "correct_concept": "Role assignments apply to existing and future resources within the scope."
+    },
+    {
+      "tag_id": "MG-RBAC-03",
+      "domain": "Azure management and governance",
+      "concept_group": "Access and governance",
+      "name": "RBAC prevents deletion by Owners",
+      "description": "Uses permissions to stop accidental deletion instead of a lock.",
+      "correct_concept": "Locks override user permissions, including Owner."
+    },
+    {
+      "tag_id": "MG-COST-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Cost management",
+      "name": "TCO vs Pricing calculator",
+      "description": "Confuses the TCO calculator (on-premises vs Azure comparison) with the Pricing calculator (cost of Azure resources).",
+      "correct_concept": "Pricing calculator estimates Azure costs; TCO calculator compares on-premises costs with Azure."
+    },
+    {
+      "tag_id": "MG-COST-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Cost management",
+      "name": "Cost Management vs estimation",
+      "description": "Confuses Cost Management (analyse actual spend) with pre-deployment estimation.",
+      "correct_concept": "Cost Management analyses and budgets actual spend."
+    },
+    {
+      "tag_id": "MG-COST-03",
+      "domain": "Azure management and governance",
+      "concept_group": "Cost management",
+      "name": "Tags reduce cost",
+      "description": "Believes tagging itself lowers cost.",
+      "correct_concept": "Tags help allocate and report costs; reservations or right-sizing reduce them."
+    },
+    {
+      "tag_id": "MG-COST-04",
+      "domain": "Azure management and governance",
+      "concept_group": "Cost management",
+      "name": "Grouping gives discounts",
+      "description": "Believes management groups or similar structures provide pricing discounts.",
+      "correct_concept": "Management groups organise governance; they do not discount prices."
+    },
+    {
+      "tag_id": "MG-SLA-01",
+      "domain": "Azure management and governance",
+      "concept_group": "SLAs",
+      "name": "Composite SLA is the highest",
+      "description": "Picks the higher of the individual SLAs.",
+      "correct_concept": "Composite SLA is the product of the dependent services' SLAs, so it is lower than each."
+    },
+    {
+      "tag_id": "MG-SLA-02",
+      "domain": "Azure management and governance",
+      "concept_group": "SLAs",
+      "name": "Composite SLA is the average",
+      "description": "Averages the individual SLAs.",
+      "correct_concept": "Multiply the SLAs rather than averaging them."
+    },
+    {
+      "tag_id": "MG-SLA-03",
+      "domain": "Azure management and governance",
+      "concept_group": "SLAs",
+      "name": "Composite SLA reaches 100%",
+      "description": "Believes combining services yields 100% availability.",
+      "correct_concept": "Chained dependencies lower the combined SLA; redundancy is needed to raise it."
+    },
+    {
+      "tag_id": "MG-MON-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Monitoring",
+      "name": "Monitor vs Service Health",
+      "description": "Confuses Azure Monitor (your resources' telemetry) with Service Health (Azure platform incidents).",
+      "correct_concept": "Service Health reports Azure outages and maintenance affecting you; Monitor collects metrics and logs."
+    },
+    {
+      "tag_id": "MG-MON-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Monitoring",
+      "name": "Advisor vs other tools",
+      "description": "Confuses Azure Advisor recommendations with monitoring, health, or security services.",
+      "correct_concept": "Advisor gives personalised best-practice recommendations; it does not report incidents or enforce security."
+    },
+    {
+      "tag_id": "MG-SEC-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Security",
+      "name": "Defender for Cloud vs identity controls",
+      "description": "Confuses Defender for Cloud (posture and threat protection) with identity services.",
+      "correct_concept": "Defender for Cloud assesses security posture and protects workloads; it does not control sign-in."
+    },
+    {
+      "tag_id": "MG-SEC-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Security",
+      "name": "Identity service vs posture management",
+      "description": "Believes Microsoft Entra ID provides workload security posture management.",
+      "correct_concept": "Entra ID is identity; Defender for Cloud handles workload security posture."
+    },
+    {
+      "tag_id": "MG-TOOL-01",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Mixes up management interfaces",
+      "description": "Confuses graphical (portal) and command-line interfaces.",
+      "correct_concept": "Portal is a web GUI; CLI and PowerShell are command line; Cloud Shell is a browser-based shell."
+    },
+    {
+      "tag_id": "MG-TOOL-02",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Templates vs shells",
+      "description": "Confuses declarative templates with interactive shells.",
+      "correct_concept": "ARM/Bicep templates declare resources; shells run commands."
+    },
+    {
+      "tag_id": "MG-TOOL-03",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Arc vs IaC",
+      "description": "Believes Azure Arc is used to deploy repeatable environments.",
+      "correct_concept": "Azure Arc extends Azure management to resources outside Azure; it is not a templating tool."
+    },
+    {
+      "tag_id": "MG-TOOL-04",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Local module vs browser shell",
+      "description": "Believes PowerShell always needs local installation.",
+      "correct_concept": "Cloud Shell offers a pre-authenticated browser-based environment with Azure CLI and PowerShell."
+    },
+    {
+      "tag_id": "MG-TOOL-05",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Shell vs declarative deployment",
+      "description": "Believes Cloud Shell is a declarative deployment method.",
+      "correct_concept": "Cloud Shell is where you run commands; ARM/Bicep declares the desired state."
+    },
+    {
+      "tag_id": "MG-TOOL-06",
+      "domain": "Azure management and governance",
+      "concept_group": "Management tools",
+      "name": "Portal deployments are repeatable",
+      "description": "Believes manual portal clicks give repeatable, consistent deployments.",
+      "correct_concept": "Infrastructure as code (ARM templates, Bicep) provides repeatable, consistent deployments."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "CC-001",
+      "domain": "Cloud concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": 1,
+      "stem": "A manager says: \"We use Microsoft 365 (SaaS), so Microsoft is responsible for everything.\" Which item is still always the company's responsibility?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Information and data",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Data, devices, and accounts/identities remain the customer's responsibility in every service type."
+        },
+        {
+          "letter": "B",
+          "text": "Physical datacenter security",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-02",
+          "rationale": "Physical security is always the cloud provider's responsibility."
+        },
+        {
+          "letter": "C",
+          "text": "Patching the host servers' operating system",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-02",
+          "rationale": "Host infrastructure is managed by the provider in SaaS."
+        },
+        {
+          "letter": "D",
+          "text": "Nothing, because SaaS transfers all responsibility to the provider",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-01",
+          "rationale": "Even in SaaS the customer remains responsible for data, devices, and identities."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "Under the shared responsibility model, the customer always owns their information and data, devices, and accounts and identities. Physical infrastructure always belongs to the provider; OS and application layers shift to the provider as you move from IaaS to PaaS to SaaS.",
+      "concept_note": "Always the customer: information and data, devices, accounts and identities. Always the provider: physical datacenter, network, and hosts.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-002",
+      "domain": "Cloud concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": 2,
+      "stem": "A company runs a Windows Server virtual machine in Azure (IaaS). Who is responsible for managing and patching the guest operating system?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Microsoft, because Azure hosts the virtual machine",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-04",
+          "rationale": "Hosting the VM does not make Microsoft responsible for the guest OS."
+        },
+        {
+          "letter": "B",
+          "text": "The customer",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "In IaaS the customer manages the guest OS (and everything above it); Microsoft manages the physical hosts and hypervisor."
+        },
+        {
+          "letter": "C",
+          "text": "Responsibility is split 50/50, with each side patching half of the OS",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-05",
+          "rationale": "Responsibility is divided by layer, not split evenly."
+        },
+        {
+          "letter": "D",
+          "text": "Azure always patches every VM automatically, so nobody needs to act",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-04",
+          "rationale": "Patching is not automatic by default; the customer is responsible for guest OS management."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "In IaaS, the provider is responsible for the physical datacenter, network, and hosts, while the customer manages the operating system, applications, and data on the VM.",
+      "concept_note": "IaaS: customer manages OS, runtime, apps, data. Provider manages physical hosts, network, datacenter.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-003",
+      "domain": "Cloud concepts",
+      "topic": "Consumption-based model, CapEx vs OpEx",
+      "difficulty": 1,
+      "stem": "A company stops buying servers upfront and instead pays monthly for the Azure resources it uses. How does this change its spending?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It shifts spending from operational expenditure to capital expenditure",
+          "is_correct": false,
+          "misconception_tag": "CC-CAPEX-01",
+          "rationale": "This reverses the terms."
+        },
+        {
+          "letter": "B",
+          "text": "Costs become fixed and no longer depend on usage",
+          "is_correct": false,
+          "misconception_tag": "CC-CAPEX-02",
+          "rationale": "The consumption-based model ties cost to usage."
+        },
+        {
+          "letter": "C",
+          "text": "It shifts spending from capital expenditure to operational expenditure",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Upfront hardware purchases (CapEx) are replaced by ongoing, usage-based costs (OpEx)."
+        },
+        {
+          "letter": "D",
+          "text": "Costs are unchanged because Azure bills once per year",
+          "is_correct": false,
+          "misconception_tag": "CC-CAPEX-02",
+          "rationale": "Azure bills based on usage, typically monthly."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Cloud shifts spending from CapEx (buying hardware upfront) to OpEx (paying for what you use). The consumption-based model means no upfront cost and you pay only for resources consumed.",
+      "concept_note": "CapEx = upfront purchase. OpEx = ongoing spend. Consumption-based = pay for what you use.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-004",
+      "domain": "Cloud concepts",
+      "topic": "Cloud benefits: elasticity",
+      "difficulty": 1,
+      "stem": "An online shop's traffic spikes during sales. Its Azure resources automatically scale out during the spike and scale back in afterwards. Which cloud benefit is this?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "High availability",
+          "is_correct": false,
+          "misconception_tag": "CC-ELAS-01",
+          "rationale": "High availability is about staying accessible despite failures."
+        },
+        {
+          "letter": "B",
+          "text": "Predictability",
+          "is_correct": false,
+          "misconception_tag": "CC-BEN-01",
+          "rationale": "Predictability is about forecasting performance and cost."
+        },
+        {
+          "letter": "C",
+          "text": "Geo-distribution",
+          "is_correct": false,
+          "misconception_tag": "CC-BEN-01",
+          "rationale": "Geo-distribution is about placing services near users worldwide."
+        },
+        {
+          "letter": "D",
+          "text": "Elasticity",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Elasticity automatically adjusts resources to match demand."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "Elasticity is the ability to add and remove resources automatically as demand changes, so you pay only for what is needed.",
+      "concept_note": "Elasticity = automatic scale out and in to match demand.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-005",
+      "domain": "Cloud concepts",
+      "topic": "Cloud models",
+      "difficulty": 2,
+      "stem": "A company must keep sensitive data in its own datacenter but wants to use Azure for extra capacity during busy periods. Which cloud model fits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hybrid cloud",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Hybrid combines on-premises infrastructure with public cloud."
+        },
+        {
+          "letter": "B",
+          "text": "Public cloud",
+          "is_correct": false,
+          "misconception_tag": "CC-MODEL-01",
+          "rationale": "A pure public cloud would place all resources in the provider's datacenters."
+        },
+        {
+          "letter": "C",
+          "text": "Private cloud",
+          "is_correct": false,
+          "misconception_tag": "CC-MODEL-01",
+          "rationale": "A private cloud alone does not use Azure's public capacity."
+        },
+        {
+          "letter": "D",
+          "text": "Multicloud",
+          "is_correct": false,
+          "misconception_tag": "CC-MODEL-02",
+          "rationale": "Multicloud means using more than one cloud provider, not combining on-premises with cloud."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "A hybrid cloud combines on-premises (or private cloud) resources with public cloud, allowing sensitive data to stay on-premises while workloads burst into Azure.",
+      "concept_note": "Public = provider datacenters. Private = organisation-owned. Hybrid = both. Multicloud = multiple providers.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-006",
+      "domain": "Cloud concepts",
+      "topic": "IaaS, PaaS, SaaS",
+      "difficulty": 1,
+      "stem": "A developer wants to publish a web app without managing the operating system or web server runtime. Which service type does this describe?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Infrastructure as a service (IaaS)",
+          "is_correct": false,
+          "misconception_tag": "CC-SVC-01",
+          "rationale": "In IaaS you manage the OS and runtime."
+        },
+        {
+          "letter": "B",
+          "text": "Platform as a service (PaaS)",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "PaaS (for example Azure App Service) lets you deploy code while the provider manages OS and runtime."
+        },
+        {
+          "letter": "C",
+          "text": "Software as a service (SaaS)",
+          "is_correct": false,
+          "misconception_tag": "CC-SVC-01",
+          "rationale": "SaaS is finished software you consume, not a platform to run your own app."
+        },
+        {
+          "letter": "D",
+          "text": "Infrastructure as code (IaC)",
+          "is_correct": false,
+          "misconception_tag": "CC-SVC-02",
+          "rationale": "IaC is a deployment practice, not a service model."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "PaaS provides a managed platform for building and running applications without managing underlying OS or runtime.",
+      "concept_note": "PaaS: customer manages app and data; provider manages OS, runtime, and infrastructure.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-007",
+      "domain": "Cloud concepts",
+      "topic": "High availability",
+      "difficulty": 1,
+      "stem": "The architecture team wants an application to stay accessible with minimal downtime when individual hardware components fail. Which principle does this describe?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Disaster recovery",
+          "is_correct": false,
+          "misconception_tag": "CC-HA-01",
+          "rationale": "Disaster recovery is about restoring service after a major disruption."
+        },
+        {
+          "letter": "B",
+          "text": "Elasticity",
+          "is_correct": false,
+          "misconception_tag": "CC-ELAS-01",
+          "rationale": "Elasticity adjusts capacity to demand."
+        },
+        {
+          "letter": "C",
+          "text": "High availability",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "High availability keeps services accessible with minimal downtime during failures."
+        },
+        {
+          "letter": "D",
+          "text": "Agility",
+          "is_correct": false,
+          "misconception_tag": "CC-BEN-01",
+          "rationale": "Agility is about quickly provisioning and changing resources."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "High availability is designed so workloads continue running with minimal interruption when components fail. Disaster recovery addresses recovery from larger-scale outages.",
+      "concept_note": "HA = minimal downtime through component failures. DR = recover after major disruption.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-008",
+      "domain": "Cloud concepts",
+      "topic": "Shared responsibility model (PaaS)",
+      "difficulty": 2,
+      "stem": "A company uses Azure SQL Database (PaaS). Which task remains the company's responsibility?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Applying patches to the database engine",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-03",
+          "rationale": "In PaaS the provider patches the database engine."
+        },
+        {
+          "letter": "B",
+          "text": "Maintaining the operating system of the underlying servers",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-03",
+          "rationale": "The provider manages the OS in PaaS."
+        },
+        {
+          "letter": "C",
+          "text": "Maintaining the physical network in the datacenter",
+          "is_correct": false,
+          "misconception_tag": "CC-SRM-02",
+          "rationale": "Physical network is always the provider's responsibility."
+        },
+        {
+          "letter": "D",
+          "text": "Managing which accounts and identities can access the data",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Accounts, identities, and data are always the customer's responsibility."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "In PaaS the provider manages the platform (OS, engine patches, physical layers); the customer still manages data and identities/access.",
+      "concept_note": "PaaS: provider manages OS and platform runtime. Customer manages data, identities, and application configuration.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "CC-009",
+      "domain": "Cloud concepts",
+      "topic": "Scalability",
+      "difficulty": 1,
+      "stem": "Traffic to an app increases, so you add more virtual machine instances behind a load balancer. What is this called?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Scaling out (horizontal scaling)",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Adding more instances is scaling out."
+        },
+        {
+          "letter": "B",
+          "text": "Scaling up (vertical scaling)",
+          "is_correct": false,
+          "misconception_tag": "CC-SCALE-01",
+          "rationale": "Scaling up makes one instance bigger."
+        },
+        {
+          "letter": "C",
+          "text": "Failover",
+          "is_correct": false,
+          "misconception_tag": "CC-SCALE-02",
+          "rationale": "Failover switches to a standby after a failure."
+        },
+        {
+          "letter": "D",
+          "text": "Right-sizing",
+          "is_correct": false,
+          "misconception_tag": "CC-SCALE-02",
+          "rationale": "Right-sizing adjusts resources to reduce cost."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "Scaling out (horizontal) adds more instances; scaling up (vertical) adds CPU or memory to an existing instance.",
+      "concept_note": "Out/horizontal = more instances. Up/vertical = larger instance.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-001",
+      "domain": "Azure architecture and services",
+      "topic": "Regions and availability zones",
+      "difficulty": 2,
+      "stem": "You need a VM workload to remain available if one datacenter in an Azure region fails. What should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A region pair",
+          "is_correct": false,
+          "misconception_tag": "AR-RES-01",
+          "rationale": "Region pairs address large-scale regional disasters."
+        },
+        {
+          "letter": "B",
+          "text": "Availability zones",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Availability zones are physically separate datacenters within a region, with independent power, cooling, and networking."
+        },
+        {
+          "letter": "C",
+          "text": "A resource group",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-05",
+          "rationale": "A resource group is a logical container with no resiliency function."
+        },
+        {
+          "letter": "D",
+          "text": "A management group",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-05",
+          "rationale": "Management groups organise subscriptions; they do not affect availability."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "Deploying across availability zones protects against a datacenter-level failure within a region.",
+      "concept_note": "Availability zone = separate datacenters in one region. Region pair = two regions in the same geography.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-002",
+      "domain": "Azure architecture and services",
+      "topic": "Region pairs",
+      "difficulty": 2,
+      "stem": "Which statement correctly describes an Azure region pair?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Two datacenters inside the same Azure region",
+          "is_correct": false,
+          "misconception_tag": "AR-RES-01",
+          "rationale": "That describes availability zones."
+        },
+        {
+          "letter": "B",
+          "text": "Two subscriptions linked for shared billing",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-05",
+          "rationale": "Subscriptions are not geographic constructs."
+        },
+        {
+          "letter": "C",
+          "text": "Two regions in the same geography, paired to support disaster recovery",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Region pairs support recovery from regional disasters."
+        },
+        {
+          "letter": "D",
+          "text": "Two availability zones that share the same power source",
+          "is_correct": false,
+          "misconception_tag": "AR-RES-02",
+          "rationale": "Availability zones have independent power."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Each region is paired with another in the same geography to support disaster recovery and coordinated platform updates.",
+      "concept_note": "Region pair = two regions, same geography, for disaster recovery.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-003",
+      "domain": "Azure architecture and services",
+      "topic": "Resource organisation",
+      "difficulty": 1,
+      "stem": "Which option shows Azure's resource hierarchy from the top level down?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Subscription, management group, resource group, resource",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-01",
+          "rationale": "Management groups sit above subscriptions."
+        },
+        {
+          "letter": "B",
+          "text": "Management group, resource group, subscription, resource",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-02",
+          "rationale": "Resource groups sit inside subscriptions."
+        },
+        {
+          "letter": "C",
+          "text": "Resource group, subscription, management group, resource",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-02",
+          "rationale": "This inverts the hierarchy."
+        },
+        {
+          "letter": "D",
+          "text": "Management group, subscription, resource group, resource",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "This is the correct hierarchy."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "Management groups contain subscriptions; subscriptions contain resource groups; resource groups contain resources.",
+      "concept_note": "Management group > subscription > resource group > resource.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-004",
+      "domain": "Azure architecture and services",
+      "topic": "Resource groups",
+      "difficulty": 1,
+      "stem": "You delete a resource group that contains several resources. What happens to those resources?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They are all deleted with the resource group",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Deleting a resource group deletes all resources it contains."
+        },
+        {
+          "letter": "B",
+          "text": "They stay and become unassigned",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-03",
+          "rationale": "Resources cannot exist without a resource group."
+        },
+        {
+          "letter": "C",
+          "text": "They move to a default resource group",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-03",
+          "rationale": "Azure has no automatic default group move."
+        },
+        {
+          "letter": "D",
+          "text": "The whole subscription is deleted too",
+          "is_correct": false,
+          "misconception_tag": "AR-ORG-06",
+          "rationale": "Deletion cascades downward, not to the subscription."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "A resource group is a lifecycle container: deleting it deletes everything inside it. Use resource locks to prevent accidents.",
+      "concept_note": "Deleting a resource group deletes its resources.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-005",
+      "domain": "Azure architecture and services",
+      "topic": "Compute options: serverless",
+      "difficulty": 1,
+      "stem": "You want to run small pieces of code in response to events and pay only per execution. Which Azure service fits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure Virtual Machines",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-01",
+          "rationale": "VMs run continuously and you manage the OS."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Functions",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Azure Functions is serverless and event-driven, billed per execution."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Kubernetes Service",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-02",
+          "rationale": "AKS orchestrates containers; it is not per-execution code."
+        },
+        {
+          "letter": "D",
+          "text": "Azure App Service",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-04",
+          "rationale": "App Service hosts always-on web apps."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "Azure Functions runs code triggered by events without managing servers, billed by usage.",
+      "concept_note": "Functions = serverless, event-driven, per-execution billing.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-006",
+      "domain": "Azure architecture and services",
+      "topic": "Compute options: containers",
+      "difficulty": 2,
+      "stem": "You need to run a single containerised app on demand without provisioning VMs or managing a Kubernetes cluster. Which service fits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure Virtual Machines",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-01",
+          "rationale": "You would manage the VM and container runtime."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Kubernetes Service",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-02",
+          "rationale": "AKS requires a managed cluster for orchestration."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Container Instances",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "ACI runs containers on demand without managing VMs or orchestration."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Virtual Desktop",
+          "is_correct": false,
+          "misconception_tag": "AR-COMP-03",
+          "rationale": "AVD delivers virtual desktops and apps to users."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Azure Container Instances is the simplest way to run a container in Azure without managing servers.",
+      "concept_note": "ACI = single containers on demand. AKS = orchestration at scale.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-007",
+      "domain": "Azure architecture and services",
+      "topic": "Storage redundancy",
+      "difficulty": 2,
+      "stem": "Which Azure Storage redundancy option copies data synchronously across three availability zones in the primary region?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Locally redundant storage (LRS)",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-01",
+          "rationale": "LRS keeps three copies in a single datacenter."
+        },
+        {
+          "letter": "B",
+          "text": "Geo-redundant storage (GRS)",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-02",
+          "rationale": "GRS replicates asynchronously to a secondary region."
+        },
+        {
+          "letter": "C",
+          "text": "Archive access tier",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-03",
+          "rationale": "Access tiers affect cost and retrieval speed, not redundancy."
+        },
+        {
+          "letter": "D",
+          "text": "Zone-redundant storage (ZRS)",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "ZRS replicates synchronously across three availability zones."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "ZRS protects against a datacenter failure within the region by spreading copies across zones.",
+      "concept_note": "LRS = one datacenter. ZRS = three zones. GRS = adds a secondary region.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-008",
+      "domain": "Azure architecture and services",
+      "topic": "Storage services",
+      "difficulty": 1,
+      "stem": "Which Azure Storage service is designed for large amounts of unstructured object data, such as images and videos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure Blob storage",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Blob storage stores unstructured objects at scale."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Files",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-04",
+          "rationale": "Azure Files provides file shares."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Table storage",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-05",
+          "rationale": "Table storage holds NoSQL structured data."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Queue storage",
+          "is_correct": false,
+          "misconception_tag": "AR-STOR-06",
+          "rationale": "Queue storage holds messages."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "Blob storage is the object store for unstructured data such as media, backups, and documents.",
+      "concept_note": "Blob = objects. Files = file shares. Table = NoSQL. Queue = messages.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-009",
+      "domain": "Azure architecture and services",
+      "topic": "Networking: hybrid connectivity",
+      "difficulty": 2,
+      "stem": "A company needs a private, dedicated connection from its datacenter to Azure that does not travel over the public internet. What should it use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure VPN Gateway",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-01",
+          "rationale": "VPN Gateway uses encrypted tunnels over the public internet."
+        },
+        {
+          "letter": "B",
+          "text": "Azure ExpressRoute",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "ExpressRoute provides private connectivity to Azure."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Bastion",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-02",
+          "rationale": "Bastion provides secure RDP/SSH to VMs."
+        },
+        {
+          "letter": "D",
+          "text": "Virtual network peering",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-03",
+          "rationale": "Peering connects Azure virtual networks."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "ExpressRoute extends on-premises networks into Azure over a private connection supplied by a connectivity provider.",
+      "concept_note": "ExpressRoute = private connection. VPN Gateway = encrypted over the internet.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-010",
+      "domain": "Azure architecture and services",
+      "topic": "Networking: traffic filtering",
+      "difficulty": 2,
+      "stem": "You need allow/deny rules based on source, destination, port, and protocol, applied to a subnet or network interface. What should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure Load Balancer",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-05",
+          "rationale": "Load Balancer distributes traffic."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Firewall",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-04",
+          "rationale": "Azure Firewall is a centralised managed service, not subnet/NIC-level rules."
+        },
+        {
+          "letter": "C",
+          "text": "Network security group (NSG)",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "NSGs apply allow/deny rules to subnets and network interfaces."
+        },
+        {
+          "letter": "D",
+          "text": "Azure DNS",
+          "is_correct": false,
+          "misconception_tag": "AR-NET-06",
+          "rationale": "Azure DNS resolves names."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "A network security group filters inbound and outbound traffic for Azure resources in a virtual network using security rules.",
+      "concept_note": "NSG = rules on subnet or NIC. Azure Firewall = centralised, managed. Load Balancer = distributes.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-011",
+      "domain": "Azure architecture and services",
+      "topic": "Identity: Entra Domain Services",
+      "difficulty": 3,
+      "stem": "A legacy app in Azure needs LDAP, Kerberos, and domain join, and the team does not want to deploy domain controllers. What should it use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Microsoft Entra ID alone",
+          "is_correct": false,
+          "misconception_tag": "AR-ID-01",
+          "rationale": "Entra ID does not provide LDAP, Kerberos, or domain join."
+        },
+        {
+          "letter": "B",
+          "text": "Microsoft Entra Conditional Access",
+          "is_correct": false,
+          "misconception_tag": "MG-IAM-01",
+          "rationale": "Conditional Access enforces sign-in controls."
+        },
+        {
+          "letter": "C",
+          "text": "Azure role-based access control",
+          "is_correct": false,
+          "misconception_tag": "AR-IAM-01",
+          "rationale": "RBAC grants permissions on Azure resources."
+        },
+        {
+          "letter": "D",
+          "text": "Microsoft Entra Domain Services",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Domain Services provides managed domain services such as LDAP, Kerberos, and domain join."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "Microsoft Entra Domain Services offers managed domain services compatible with Active Directory, without running your own domain controllers.",
+      "concept_note": "Entra ID = cloud identity. Entra Domain Services = managed AD DS-style services.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "AR-012",
+      "domain": "Azure architecture and services",
+      "topic": "Identity: authentication",
+      "difficulty": 1,
+      "stem": "A user signs in with a password and a multifactor prompt to prove who they are. What is this process called?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Authentication",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Authentication verifies identity."
+        },
+        {
+          "letter": "B",
+          "text": "Authorization",
+          "is_correct": false,
+          "misconception_tag": "AR-IAM-02",
+          "rationale": "Authorization decides what an identity can access."
+        },
+        {
+          "letter": "C",
+          "text": "Single sign-on",
+          "is_correct": false,
+          "misconception_tag": "AR-IAM-03",
+          "rationale": "SSO lets one sign-in access multiple apps."
+        },
+        {
+          "letter": "D",
+          "text": "Role assignment",
+          "is_correct": false,
+          "misconception_tag": "AR-IAM-01",
+          "rationale": "Role assignment grants permissions after identity is established."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "Authentication proves identity; authorization determines permitted actions afterwards.",
+      "concept_note": "Authentication = who you are. Authorization = what you can do.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-001",
+      "domain": "Azure management and governance",
+      "topic": "Conditional Access",
+      "difficulty": 2,
+      "stem": "You want to require multifactor authentication when users sign in from outside the corporate network. Which feature should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure role-based access control",
+          "is_correct": false,
+          "misconception_tag": "MG-IAM-01",
+          "rationale": "RBAC governs what authenticated users can do."
+        },
+        {
+          "letter": "B",
+          "text": "Microsoft Entra Conditional Access",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Conditional Access evaluates signals such as location and enforces controls such as MFA."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Policy",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-01",
+          "rationale": "Policy governs resource configuration."
+        },
+        {
+          "letter": "D",
+          "text": "Microsoft Defender for Cloud",
+          "is_correct": false,
+          "misconception_tag": "MG-SEC-01",
+          "rationale": "Defender for Cloud assesses security posture."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "Conditional Access applies policies at sign-in using signals (user, location, device, risk) and enforces controls like MFA or blocking access.",
+      "concept_note": "Conditional Access = sign-in policy engine (signals, then controls).",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-002",
+      "domain": "Azure management and governance",
+      "topic": "Azure Policy",
+      "difficulty": 2,
+      "stem": "You must stop anyone from deploying virtual machines outside approved Azure regions. What should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure role-based access control",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-01",
+          "rationale": "RBAC controls who can act, not which configurations are allowed."
+        },
+        {
+          "letter": "B",
+          "text": "A resource lock",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-02",
+          "rationale": "Locks block changes or deletion of existing resources."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Policy",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Azure Policy can deny deployments that violate rules such as allowed locations."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Cost Management",
+          "is_correct": false,
+          "misconception_tag": "MG-COST-02",
+          "rationale": "Cost Management analyses spend; it does not block deployments."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Azure Policy evaluates resource properties and can deny or audit non-compliant deployments. An authorised user with RBAC could otherwise still deploy to any region.",
+      "concept_note": "Policy = what is allowed. RBAC = who is allowed.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-003",
+      "domain": "Azure management and governance",
+      "topic": "Resource locks",
+      "difficulty": 2,
+      "stem": "A production storage account must not be deleted by mistake, even by users with Owner permissions. What should you apply?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "An Azure Policy location restriction",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-03",
+          "rationale": "Policy does not prevent deletion of existing resources."
+        },
+        {
+          "letter": "B",
+          "text": "A tag named DoNotDelete",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-04",
+          "rationale": "Tags are metadata and do not enforce anything."
+        },
+        {
+          "letter": "C",
+          "text": "The Reader role for everyone on the subscription",
+          "is_correct": false,
+          "misconception_tag": "MG-RBAC-03",
+          "rationale": "This removes needed access and is not the targeted control."
+        },
+        {
+          "letter": "D",
+          "text": "A Delete (CanNotDelete) resource lock",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Locks override user permissions, including Owner."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "A CanNotDelete lock prevents deletion until the lock is removed, regardless of the user's role.",
+      "concept_note": "Resource locks: CanNotDelete and ReadOnly; they override RBAC permissions.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-004",
+      "domain": "Azure management and governance",
+      "topic": "RBAC scope",
+      "difficulty": 3,
+      "stem": "You assign a role to a user at the subscription scope. Which statement is correct?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is inherited by all resource groups and resources in the subscription",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "RBAC permissions flow down the scope hierarchy."
+        },
+        {
+          "letter": "B",
+          "text": "It applies only to the subscription object itself",
+          "is_correct": false,
+          "misconception_tag": "MG-RBAC-01",
+          "rationale": "Permissions are inherited by child scopes."
+        },
+        {
+          "letter": "C",
+          "text": "It applies only to resources created after the assignment",
+          "is_correct": false,
+          "misconception_tag": "MG-RBAC-02",
+          "rationale": "It covers existing and future resources."
+        },
+        {
+          "letter": "D",
+          "text": "It applies only to resource groups, not individual resources",
+          "is_correct": false,
+          "misconception_tag": "MG-RBAC-01",
+          "rationale": "Resources inherit too."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "RBAC assignments are inherited by child scopes, so a role at subscription scope applies to everything beneath it.",
+      "concept_note": "Scope hierarchy: management group > subscription > resource group > resource; permissions inherit downward.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-005",
+      "domain": "Azure management and governance",
+      "topic": "Cost estimation tools",
+      "difficulty": 2,
+      "stem": "You want to estimate the monthly cost of new Azure resources before deploying them. Which tool should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Total Cost of Ownership (TCO) calculator",
+          "is_correct": false,
+          "misconception_tag": "MG-COST-01",
+          "rationale": "The TCO calculator compares on-premises costs with Azure."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Pricing calculator",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "The Pricing calculator estimates the cost of Azure services you configure."
+        },
+        {
+          "letter": "C",
+          "text": "Microsoft Cost Management",
+          "is_correct": false,
+          "misconception_tag": "MG-COST-02",
+          "rationale": "Cost Management analyses actual spend."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Advisor",
+          "is_correct": false,
+          "misconception_tag": "MG-MON-02",
+          "rationale": "Advisor gives recommendations on existing resources."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "Use the Pricing calculator to estimate costs of planned Azure services; use the TCO calculator for on-premises versus Azure comparisons.",
+      "concept_note": "Pricing calculator = estimate Azure cost. TCO = on-prem versus Azure. Cost Management = analyse actual spend.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-006",
+      "domain": "Azure management and governance",
+      "topic": "Cost optimisation",
+      "difficulty": 2,
+      "stem": "A company runs VMs continuously with predictable demand. Which option can reduce their cost?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Resource locks",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-02",
+          "rationale": "Locks protect resources and have no pricing effect."
+        },
+        {
+          "letter": "B",
+          "text": "Resource tags",
+          "is_correct": false,
+          "misconception_tag": "MG-COST-03",
+          "rationale": "Tags help report costs but do not reduce them."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Reservations (1-year or 3-year commitment)",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Reservations give discounts for committing to steady usage."
+        },
+        {
+          "letter": "D",
+          "text": "Management groups",
+          "is_correct": false,
+          "misconception_tag": "MG-COST-04",
+          "rationale": "Management groups organise governance and do not discount prices."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Azure Reservations lower cost for predictable, long-running workloads in exchange for a one- or three-year commitment.",
+      "concept_note": "Reservations = commit for discount. Tags = allocation/reporting only.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-007",
+      "domain": "Azure management and governance",
+      "topic": "Service Level Agreements",
+      "difficulty": 3,
+      "stem": "An application depends on two services whose SLAs are 99.9% and 99.95%. Without added redundancy, what is the approximate composite SLA?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "99.95%",
+          "is_correct": false,
+          "misconception_tag": "MG-SLA-01",
+          "rationale": "The composite cannot exceed the lowest individual SLA."
+        },
+        {
+          "letter": "B",
+          "text": "99.925%",
+          "is_correct": false,
+          "misconception_tag": "MG-SLA-02",
+          "rationale": "SLAs are multiplied, not averaged."
+        },
+        {
+          "letter": "C",
+          "text": "100%",
+          "is_correct": false,
+          "misconception_tag": "MG-SLA-03",
+          "rationale": "Combining dependencies lowers availability."
+        },
+        {
+          "letter": "D",
+          "text": "99.85%",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "0.999 × 0.9995 ≈ 0.9985, or about 99.85%."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "Composite SLA = product of the individual SLAs: 0.999 × 0.9995 ≈ 0.9985 (about 99.85%).",
+      "concept_note": "Dependent services: multiply SLAs. Redundant paths can raise availability.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-008",
+      "domain": "Azure management and governance",
+      "topic": "Monitoring and health",
+      "difficulty": 2,
+      "stem": "You want alerts about Azure platform incidents and planned maintenance that affect your resources. Which service should you use?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure Service Health",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Service Health reports Azure outages and planned maintenance affecting you."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Monitor",
+          "is_correct": false,
+          "misconception_tag": "MG-MON-01",
+          "rationale": "Monitor collects metrics and logs from your resources."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Advisor",
+          "is_correct": false,
+          "misconception_tag": "MG-MON-02",
+          "rationale": "Advisor provides optimisation recommendations."
+        },
+        {
+          "letter": "D",
+          "text": "Microsoft Defender for Cloud",
+          "is_correct": false,
+          "misconception_tag": "MG-SEC-01",
+          "rationale": "Defender for Cloud assesses security posture."
+        }
+      ],
+      "correct_letter": "A",
+      "explanation": "Azure Service Health tracks Azure service issues and planned maintenance relevant to your subscriptions and regions.",
+      "concept_note": "Service Health = Azure platform incidents. Monitor = your telemetry. Advisor = recommendations.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-009",
+      "domain": "Azure management and governance",
+      "topic": "Security posture",
+      "difficulty": 2,
+      "stem": "Which service continuously assesses security posture and provides threat protection for workloads in Azure, on-premises, and other clouds?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Microsoft Entra ID",
+          "is_correct": false,
+          "misconception_tag": "MG-SEC-02",
+          "rationale": "Entra ID is an identity service."
+        },
+        {
+          "letter": "B",
+          "text": "Microsoft Defender for Cloud",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Defender for Cloud provides security posture management and threat protection."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Advisor",
+          "is_correct": false,
+          "misconception_tag": "MG-MON-02",
+          "rationale": "Advisor gives recommendations across reliability, cost, and more, but is not threat protection."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Policy",
+          "is_correct": false,
+          "misconception_tag": "MG-GOV-01",
+          "rationale": "Policy enforces configuration standards."
+        }
+      ],
+      "correct_letter": "B",
+      "explanation": "Microsoft Defender for Cloud assesses security posture and protects workloads across Azure, hybrid, and multicloud environments.",
+      "concept_note": "Defender for Cloud = posture management and workload protection.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-010",
+      "domain": "Azure management and governance",
+      "topic": "Management tools",
+      "difficulty": 2,
+      "stem": "Which option lets you manage Azure resources from a browser-based command line that is already authenticated, without installing tools locally?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Azure portal",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-01",
+          "rationale": "The portal is a graphical interface."
+        },
+        {
+          "letter": "B",
+          "text": "Azure PowerShell installed on your computer",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-04",
+          "rationale": "A local install requires setup on your machine."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Cloud Shell",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "Cloud Shell is a browser-based, pre-authenticated shell supporting Azure CLI and PowerShell."
+        },
+        {
+          "letter": "D",
+          "text": "Azure Resource Manager templates",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-02",
+          "rationale": "ARM templates declare resources; they are not a shell."
+        }
+      ],
+      "correct_letter": "C",
+      "explanation": "Azure Cloud Shell provides an authenticated command-line environment in the browser or portal.",
+      "concept_note": "Cloud Shell = browser-based shell (Bash or PowerShell), no local install.",
+      "review_status": "Drafted - SME sign-off pending"
+    },
+    {
+      "question_id": "MG-011",
+      "domain": "Azure management and governance",
+      "topic": "Infrastructure as code",
+      "difficulty": 2,
+      "stem": "A team wants to deploy identical Azure environments repeatably from declarative definitions. Which approach fits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Manually creating resources in the Azure portal",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-06",
+          "rationale": "Manual steps are not repeatable or declarative."
+        },
+        {
+          "letter": "B",
+          "text": "Azure Arc",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-03",
+          "rationale": "Arc extends Azure management to non-Azure resources."
+        },
+        {
+          "letter": "C",
+          "text": "Azure Cloud Shell",
+          "is_correct": false,
+          "misconception_tag": "MG-TOOL-05",
+          "rationale": "Cloud Shell runs commands; it is not a declarative definition."
+        },
+        {
+          "letter": "D",
+          "text": "ARM templates or Bicep",
+          "is_correct": true,
+          "misconception_tag": null,
+          "rationale": "These declare resources and deploy them consistently."
+        }
+      ],
+      "correct_letter": "D",
+      "explanation": "ARM templates and Bicep describe desired state declaratively so deployments are repeatable and consistent.",
+      "concept_note": "Infrastructure as code: ARM templates, Bicep.",
+      "review_status": "Drafted - SME sign-off pending"
+    }
+  ]
+}
