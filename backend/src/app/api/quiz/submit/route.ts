@@ -4,8 +4,6 @@ import { createClient } from "@/lib/supabase/server-auth";
 
 import { supabaseAdmin } from "@/lib/supabase/server";
 
-import { detectRepeatedPatterns } from "@/lib/misconceptions/engine";
-
 type SubmissionBody = {
 sessionId?: unknown;
 questionId?: unknown;
