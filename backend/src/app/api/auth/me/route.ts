@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server-auth";
 
 export async function GET() {
@@ -31,6 +32,7 @@ return NextResponse.json({
 
 
 } catch (error) {
+unstable_rethrow(error);
 console.error("Authentication check failed:", error);
 
 
